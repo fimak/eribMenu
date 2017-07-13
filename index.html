@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>АРМ ЕРИБ</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="src/css/normalize.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/service-tree.css">
+    <link rel="stylesheet" href="src/css/service-navigation.css">
+</head>
+<body>
+    <div class="service-tree">
+        <div class="service-tree__search">
+            <input type="text" class="service-tree__search__form" placeholder="Поиск">
+            <a href="#" class="service-tree__search__button">
+                <img src="img/loupe.svg" alt="loupe" class="service-tree__search__button__image">
+            </a>
+        </div>
+        <ul class="service-tree__list">
+            <li class="service-tree__item service-tree__item--open">
+                <a href="#">Web канал</a>
+                <ul class="service-tree__list">
+                    <li class="service-tree__item service-tree__item--open">
+                        <a href="#">Переводы и платежи</a>
+                        <ul class="service-tree__list">
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Перевод между своими картами</a>
+                            </li>
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Перевод на карту в другом банке</a>
+                            </li>
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Перевод клиенту Сбербанка</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="service-tree__item service-tree__item--open">
+                        <a href="#">Карты</a>
+                        <ul class="service-tree__list">
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Дебетовые карты</a>
+                            </li>
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Заявка на оформление новой карты</a>
+                            </li>
+                            <li class="service-tree__item service-tree__item--closed">
+                                <a href="#">Блокировка/разблокировка карты</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="service-tree__item service-tree__item--closed">
+                        <a href="#">Кредиты</a>
+                    </li>
+                    <li class="service-tree__item service-tree__item--closed">
+                        <a href="#">Страховки</a>
+                    </li>
+                    <li class="service-tree__item service-tree__item--closed">
+                        <a href="#">Инвестиции</a>
+                    </li>
+                    <li class="service-tree__item service-tree__item--closed">
+                        <a href="#">Госуслуги</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="service-navigation">
+        <div class="service-navigation__title">Переводы и платежи</div>
+        <table class="service-navigation__table">
+            <tr class="service-navigation__head">
+                <th></th>
+                <th>Наименование сервиса</th>
+                <th>ЕРИБ</th>
+                <th>PL</th>
+                <th>URL ЕРИБ</th>
+                <th>URL PL</th>
+                <th>Новый</th>
+                <th>Дубль</th>
+                <th>Теги</th>
+                <th></th>
+            </tr>
+            <tr class="service-navigation__item" data-id="0" data-weight="1" data-view="true">
+                <td>
+                    <a href="#" class="service-navigation__control trigger-view"></a>
+                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
+                </td>
+                <td>
+                    <span>Перевод между своими счетами</span>
+                </td>
+                <td>
+                    <input type="radio">
+                </td>
+                <td>
+                    <input type="radio" checked>
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <input type="checkbox" checked>
+                </td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <span>Поставщики услуг; Услуги; Перевод;</span>
+                </td>
+                <td>
+                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
+                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
+                </td>
+            </tr>
+            <tr class="service-navigation__item" data-id="1" data-weight="1" data-view="true">
+                <td>
+                    <a href="#" class="service-navigation__control trigger-view"></a>
+                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
+                </td>
+                <td>
+                    <span>Перевод на карту в другом банке</span>
+                </td>
+                <td>
+                    <input type="radio" checked>
+                </td>
+                <td>
+                    <input type="radio">
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <span>Услуги; Поставщики услуг; Перевод;</span>
+                </td>
+                <td>
+                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
+                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
+                </td>
+            </tr>
+            <tr class="service-navigation__item" data-id="2" data-weight="2" data-view="false">
+                <td>
+                    <a href="#" class="service-navigation__control trigger-view"></a>
+                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
+                </td>
+                <td>
+                    <span>Перевод клиенту Сбербанка</span>
+                </td>
+                <td>
+                    <input type="radio">
+                </td>
+                <td>
+                    <input type="radio" checked>
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <span></span>
+                </td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <span>Перевод; Поставщики услуг; Услуги;</span>
+                </td>
+                <td>
+                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
+                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
+                </td>
+            </tr>
+        </table>
+        <div class="service-adding">
+            <a href="#" class="service-adding__button">Добавить сервис</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "navigation": [
+    {
+      "id": 0,
+      "weight": 0,
+      "view": true,
+      "name": "Перевод между своими счетами",
+      "erib": true,
+      "url-erib": "",
+      "url-pl": "",
+      "isNew": false,
+      "double": false,
+      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+    },
+    {
+      "id": 1,
+      "weight": 2,
+      "view": true,
+      "name": "Перевод на карту в другом банке",
+      "erib": true,
+      "url-erib": "",
+      "url-pl": "",
+      "isNew": false,
+      "double": false,
+      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+    },
+    {
+      "id": 2,
+      "weight": 1,
+      "view": true,
+      "name": "Перевод клиенту Сбербанка",
+      "erib": true,
+      "url-erib": "",
+      "url-pl": "",
+      "isNew": false,
+      "double": false,
+      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+    }
+  ]
+}

@@ -8,12 +8,12 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
-.service-tree__search {
+.st__search {
     display: flex;
     flex-direction: row;
 }
 
-.service-tree__search__form {
+.st__search__form {
     width: 112px;
     height: 24px;
     padding: 0 8px;
@@ -23,7 +23,7 @@
     font-size: 12px;
 }
 
-.service-tree__search__button {
+.st__search__button {
     width: 46px;
     height: 26px;
     margin-left: 6px;
@@ -35,31 +35,31 @@
     box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-.service-tree__search__button__image {
+.st__search__button__image {
     width: 14px;
     height: 14px;
     vertical-align: middle;
 }
 
-.service-tree > .service-tree__list > .service-tree__item > a,
-.service-tree > .service-tree__list > .service-tree__item > .service-tree__list > .service-tree__item > a
+.service-tree > .st__list > .st__item > a,
+.service-tree > .st__list > .st__item > .st__list > .st__item > a
 {
     font-weight: bold;
 }
 
-.service-tree__list {
+.st__list {
     padding-left: 16px;
 }
 
-.service-tree__list a {
+.st__list a {
     font-size: 13px;
     text-decoration: none;
     color: #56a027;
 }
 
-.service-tree__item--open{
+.st__item--open{
     list-style-image: url("../img/rectangle-black.svg");
 }
-.service-tree__item--closed{
+.st__item--closed{
     list-style-image: url("../img/rectangle-white.svg");
 }

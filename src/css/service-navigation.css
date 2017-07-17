@@ -16,7 +16,7 @@
 
     .sn__list__item {
         list-style: none;
-        padding: 16px 27px;
+        padding: 16px 61px 22px 27px;
         background: #ffffff;
         border-radius: 4px;
         border: solid 1px #dddddd;
@@ -56,14 +56,6 @@
                 flex-direction: row;
             }
 
-            .sn__header__item:not(:last-child) {
-
-            }
-
-            .sn__header__item:not(:first-child) {
-
-            }
-
                 .sn__header__title {
                     font-size: 18px;
                     line-height: 20px;
@@ -74,25 +66,62 @@
                     width: 23px;
                     height: 13px;
                     background: url('../img/eye.svg');
-                    margin: 4px 16px;
+                    margin: 4px 0 4px 16px;
                 }
 
-                .checkbox__is-new {
+                .sn__checkbox-wrapper {
+
+                }
+                .sn__checkbox-wrapper--border {
                     padding: 0 16px;
                     border-left: 1px solid #cccccc;
+                    margin-left: 16px;
                 }
+                .sn__checkbox {
+                    display: inline-block;
+                    position: relative;
+                    line-height: 0;
+                    margin-right: 4px;
+                }
+                    .sn__checkbox > label {
+                        width: 16px;
+                        height: 16px;
+                        cursor: pointer;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #56A027;
+                        border-radius: 4px;
+                    }
+                    .sn__checkbox > label:after {
+                        content: '';
+                        width: 8px;
+                        height: 4px;
+                        position: absolute;
+                        top: 3px;
+                        left: 3px;
+                        border: 3px solid #fcfff4;
+                        border-top: none;
+                        border-right: none;
+                        background: transparent;
+                        opacity: 0;
+                        transform: rotate(-45deg);
+                     }
+                    .sn__checkbox > label:hover::after {
+                        opacity: 0.3;
+                    }
+                    .sn__checkbox > input[type=checkbox] {
+                        visibility: hidden;
+                    }
+                    .sn__checkbox > input[type=checkbox]:checked + label:after {
+                        opacity: 1;
+                    }
 
                 .sn__header__item__parent > span {
                     color: #56a027;
                     font-size: 12px;
                     border-bottom: 1px dashed #56a027;
                     cursor: pointer;
-                }
-
-                .checkbox__is-main {
-                    padding: 0 16px;
-                    border-left: 1px solid #cccccc;
-                    margin-left: 16px;
                 }
 
         .sn__row {

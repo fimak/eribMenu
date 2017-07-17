@@ -10,181 +10,115 @@
     <link rel="stylesheet" href="src/css/service-navigation.css">
 </head>
 <body>
-    <div class="service-tree">
-        <div class="service-tree__search">
-            <input type="text" class="service-tree__search__form" placeholder="Поиск">
-            <a href="#" class="service-tree__search__button">
-                <img src="img/loupe.svg" alt="loupe" class="service-tree__search__button__image">
-            </a>
+    <div class="content">
+        <div class="service-tree">
+            <div class="service-tree__search">
+                <input type="text" class="service-tree__search__form" placeholder="Поиск">
+                <a href="#" class="service-tree__search__button">
+                    <img src="img/loupe.svg" alt="loupe" class="service-tree__search__button__image">
+                </a>
+            </div>
+            <ul class="service-tree__list">
+                <li class="service-tree__item service-tree__item--open">
+                    <a href="#">Web канал</a>
+                    <ul class="service-tree__list">
+                        <li class="service-tree__item service-tree__item--open">
+                            <a href="#">Переводы и платежи</a>
+                            <ul class="service-tree__list">
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Перевод между своими картами</a>
+                                </li>
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Перевод на карту в другом банке</a>
+                                </li>
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Перевод клиенту Сбербанка</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="service-tree__item service-tree__item--open">
+                            <a href="#">Карты</a>
+                            <ul class="service-tree__list">
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Дебетовые карты</a>
+                                </li>
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Заявка на оформление новой карты</a>
+                                </li>
+                                <li class="service-tree__item service-tree__item--closed">
+                                    <a href="#">Блокировка/разблокировка карты</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="service-tree__item service-tree__item--closed">
+                            <a href="#">Кредиты</a>
+                        </li>
+                        <li class="service-tree__item service-tree__item--closed">
+                            <a href="#">Страховки</a>
+                        </li>
+                        <li class="service-tree__item service-tree__item--closed">
+                            <a href="#">Инвестиции</a>
+                        </li>
+                        <li class="service-tree__item service-tree__item--closed">
+                            <a href="#">Госуслуги</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <ul class="service-tree__list">
-            <li class="service-tree__item service-tree__item--open">
-                <a href="#">Web канал</a>
-                <ul class="service-tree__list">
-                    <li class="service-tree__item service-tree__item--open">
-                        <a href="#">Переводы и платежи</a>
-                        <ul class="service-tree__list">
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Перевод между своими картами</a>
-                            </li>
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Перевод на карту в другом банке</a>
-                            </li>
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Перевод клиенту Сбербанка</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="service-tree__item service-tree__item--open">
-                        <a href="#">Карты</a>
-                        <ul class="service-tree__list">
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Дебетовые карты</a>
-                            </li>
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Заявка на оформление новой карты</a>
-                            </li>
-                            <li class="service-tree__item service-tree__item--closed">
-                                <a href="#">Блокировка/разблокировка карты</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="service-tree__item service-tree__item--closed">
-                        <a href="#">Кредиты</a>
-                    </li>
-                    <li class="service-tree__item service-tree__item--closed">
-                        <a href="#">Страховки</a>
-                    </li>
-                    <li class="service-tree__item service-tree__item--closed">
-                        <a href="#">Инвестиции</a>
-                    </li>
-                    <li class="service-tree__item service-tree__item--closed">
-                        <a href="#">Госуслуги</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="service-navigation">
-        <div class="service-navigation__title">Переводы и платежи</div>
-        <table class="service-navigation__table">
-            <tr class="service-navigation__head">
-                <th></th>
-                <th>Наименование сервиса</th>
-                <th>ЕРИБ</th>
-                <th>PL</th>
-                <th>URL ЕРИБ</th>
-                <th>URL PL</th>
-                <th>Новый</th>
-                <th>Дубль</th>
-                <th>Теги</th>
-                <th></th>
-            </tr>
-            <tr class="service-navigation__item" data-id="0" data-weight="1" data-view="true">
-                <td>
-                    <a href="#" class="service-navigation__control trigger-view"></a>
-                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
-                </td>
-                <td>
-                    <span>Перевод между своими счетами</span>
-                </td>
-                <td>
-                    <input type="radio">
-                </td>
-                <td>
-                    <input type="radio" checked>
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <input type="checkbox" checked>
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <span>Поставщики услуг; Услуги; Перевод;</span>
-                </td>
-                <td>
-                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
-                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
-                </td>
-            </tr>
-            <tr class="service-navigation__item" data-id="1" data-weight="1" data-view="true">
-                <td>
-                    <a href="#" class="service-navigation__control trigger-view"></a>
-                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
-                </td>
-                <td>
-                    <span>Перевод на карту в другом банке</span>
-                </td>
-                <td>
-                    <input type="radio" checked>
-                </td>
-                <td>
-                    <input type="radio">
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <span>Услуги; Поставщики услуг; Перевод;</span>
-                </td>
-                <td>
-                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
-                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
-                </td>
-            </tr>
-            <tr class="service-navigation__item" data-id="2" data-weight="2" data-view="false">
-                <td>
-                    <a href="#" class="service-navigation__control trigger-view"></a>
-                    <a href="#" class="service-navigation__control trigger-remove"><img src="img/cross.svg" alt="remove"></a>
-                </td>
-                <td>
-                    <span>Перевод клиенту Сбербанка</span>
-                </td>
-                <td>
-                    <input type="radio">
-                </td>
-                <td>
-                    <input type="radio" checked>
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <span></span>
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <span>Перевод; Поставщики услуг; Услуги;</span>
-                </td>
-                <td>
-                    <a href="#" class="service-navigation__control trigger-up"><img src="img/arrow.svg" alt="down"></a>
-                    <a href="#" class="service-navigation__control trigger-down"><img src="img/arrow.svg" class="arrow-down" alt="down"></a>
-                </td>
-            </tr>
-        </table>
-        <div class="service-adding">
-            <a href="#" class="service-adding__button">Добавить сервис</a>
+
+        <div class="service-navigation">
+            <div class="service-navigation__title">Переводы и платежи</div>
+            <ul class="service-navigation__list">
+                <li class="service-navigation__list__item">
+                    <div class="service-navigation__btn-close"></div>
+                    <div class="service-navigation__header">
+                        <div class="service-navigation__header__item">
+                            <span class="service-navigation__header__title">
+                                Перевод между своими картами
+                            </span>
+                            <a href="#" class="service-navigation__btn-eye"></a>
+                            <div class="checkbox__is-new">
+                                <input type="checkbox"> Новый
+                            </div>
+                        </div>
+                        <div class="service-navigation__header__item">
+                            <div class="service-navigation__header__item__parent">
+                                Родитель: <span>Переводы и платежи</span>
+                            </div>
+                            <div class="checkbox__is-main">
+                                <input type="checkbox"> Основной
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-navigation__row">
+                        <div class="service-navigation__label">
+                            <input type="checkbox"> ЕРИБ:
+                        </div>
+                        <div class="service-navigation__field">
+                            <input class="service-navigation__link-field" type="text">
+                        </div>
+                    </div>
+                    <div class="service-navigation__row">
+                        <div class="service-navigation__label">
+                            <input type="checkbox"> PL:
+                        </div>
+                        <div class="service-navigation__field">
+                            <input class="service-navigation__link-field" type="text">
+                        </div>
+                    </div>
+                    <div class="service-navigation__row">
+                        <div class="service-navigation__label">
+                            Код сервиса:
+                        </div>
+                        <div class="service-navigation__field">
+                            <input class="service-navigation__service-code-field" type="text">
+                            <!--<label class="service-navigation__tags-label">Тэги:</label>
+                            <input class="service-navigation__tags-field" type="text">-->
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 

@@ -3,38 +3,104 @@
     {
       "id": 0,
       "weight": 0,
+      "name": "Перевод между своими картами",
       "view": true,
-      "name": "Перевод между своими счетами",
-      "erib": true,
-      "url-erib": "",
-      "url-pl": "",
-      "isNew": false,
-      "double": false,
-      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+      "isNew": true,
+      "parent": 1,
+      "isMain": true,
+      "isErib": true,
+      "eribUrl": "",
+      "isPL": true,
+      "plUrl": "",
+      "serviceCode": "Gh785we1",
+      "tags": ["Перевод", "Платежи"]
     },
     {
       "id": 1,
-      "weight": 2,
-      "view": true,
+      "weight": 1,
       "name": "Перевод на карту в другом банке",
-      "erib": true,
-      "url-erib": "",
-      "url-pl": "",
-      "isNew": false,
-      "double": false,
-      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+      "view": true,
+      "isNew": true,
+      "parent": 1,
+      "isMain": true,
+      "isErib": true,
+      "eribUrl": "",
+      "isPL": true,
+      "plUrl": "",
+      "serviceCode": "Gh785we1",
+      "tags": ["Перевод", "Банк"]
     },
     {
       "id": 2,
-      "weight": 1,
-      "view": true,
+      "weight": 2,
       "name": "Перевод клиенту Сбербанка",
-      "erib": true,
-      "url-erib": "",
-      "url-pl": "",
-      "isNew": false,
-      "double": false,
-      "tags": ["Поставщики услуг", "Услуги", "Перевод"]
+      "view": true,
+      "isNew": true,
+      "parent": 1,
+      "isMain": false,
+      "isErib": true,
+      "eribUrl": "",
+      "isPL": true,
+      "plUrl": "",
+      "serviceCode": "Gh785we1",
+      "tags": ["Перевод", "Клиент"]
+    }
+  ],
+  "tree": [
+    {
+      "name": "Web канал",
+      "children": [
+        {
+          "name": "Переводы и платежи",
+          "children": [
+            {
+              "name": "Перевод между своими картами",
+              "children": []
+            },
+            {
+              "name": "Перевод на карту в другом банке",
+              "children": []
+            },
+            {
+              "name": "Перевод клиенту Сбербанка",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Карты",
+          "children": [
+            {
+              "name": "Дебетовые карты",
+              "children": []
+            },
+            {
+              "name": "Заявка на оформление новой карты",
+              "children": []
+            },
+            {
+              "name": "Блокировка/разблокировка карты",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Кредиты",
+          "children": []
+        },
+        {
+          "name": "Страховки",
+          "children": []
+        },
+        {
+          "name": "Инвестиции",
+          "children": []
+        },
+        {
+          "name": "Госуслуги",
+          "children": []
+        }
+      ]
     }
   ]
 }

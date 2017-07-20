@@ -25,35 +25,27 @@
 
         <div class="service-navigation">
             <div class="sn__title">Переводы и платежи</div>
-            <ul class="sn__list">
+            <ul class="sn__list" id="service-navigation-list">
                 <li class="sn__list__item">
                     <div class="sn__btn-close"></div>
                     <div class="sn__drag-handle"></div>
                     <div class="sn__header">
                         <div class="sn__header__item">
+                            <div class="sn__checkbox-wrapper">
+                                <div class="sn__checkbox-image">
+                                    <input type="checkbox" id="sn__tr-hide">
+                                    <label for="sn__tr-hide"></label>
+                                </div>
+                            </div>
+                            <div class="sn__checkbox-wrapper">
+                                <div class="sn__checkbox-image sn__checkbox-image--padding">
+                                    <input type="checkbox" id="sn__tr-new">
+                                    <label for="sn__tr-new"></label>
+                                </div>
+                            </div>
                             <span class="sn__header__title">
                                 Перевод между своими картами
                             </span>
-                            <a href="#" class="sn__btn-eye"></a>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-new" checked>
-                                    <label for="sn__tr-new"></label>
-                                </div>
-                                Новый
-                            </div>
-                        </div>
-                        <div class="sn__header__item">
-                            <div class="sn__header__item__parent">
-                                Родитель: <span>Переводы и платежи</span>
-                            </div>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-main" checked>
-                                    <label for="sn__tr-main"></label>
-                                </div>
-                                Основной
-                            </div>
                         </div>
                     </div>
                     <div class="sn__row">
@@ -66,7 +58,7 @@
                                 ЕРИБ:
                             </div>
                         </div>
-                        <div class="sn__field sn__field--full-size">
+                        <div class="sn__field">
                             <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
                         </div>
                     </div>
@@ -80,7 +72,7 @@
                                 PL:
                             </div>
                         </div>
-                        <div class="sn__field sn__field--full-size">
+                        <div class="sn__field">
                             <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
                         </div>
                     </div>
@@ -91,169 +83,17 @@
                             </div>
                         </div>
                         <div class="sn__field">
-                            <input class="sn__service-code-field" type="text" value="Ght785we1">
+                            <input class="sn__service-code-field" type="text" value="transfer_client_sberbank">
                         </div>
+                    </div>
+                    <div class="sn__row">
                         <div class="sn__label">
-                            <div class="sn_label__tags">
+                            <div class="sn__label__inside">
                                 Тэги:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__tags-field" type="text" value="Переводы Платежи">
-                        </div>
-                    </div>
-                </li>
-                <li class="sn__list__item">
-                    <div class="sn__btn-close"></div>
-                    <div class="sn__drag-handle"></div>
-                    <div class="sn__header">
-                        <div class="sn__header__item">
-                            <span class="sn__header__title">
-                                Перевод между своими картами
-                            </span>
-                            <a href="#" class="sn__btn-eye"></a>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-new" checked>
-                                    <label for="sn__tr-new"></label>
-                                </div>
-                                Новый
-                            </div>
-                        </div>
-                        <div class="sn__header__item">
-                            <div class="sn__header__item__parent">
-                                Родитель: <span>Переводы и платежи</span>
-                            </div>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-main" checked>
-                                    <label for="sn__tr-main"></label>
-                                </div>
-                                Основной
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-erib" checked>
-                                    <label for="sn__tr-erib"></label>
-                                </div>
-                                ЕРИБ:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-pl" checked>
-                                    <label for="sn__tr-pl"></label>
-                                </div>
-                                PL:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                Код сервиса:
                             </div>
                         </div>
                         <div class="sn__field">
-                            <input class="sn__service-code-field" type="text" value="Ght785we1">
-                        </div>
-                        <div class="sn__label">
-                            <div class="sn_label__tags">
-                                Тэги:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__tags-field" type="text" value="Переводы Платежи">
-                        </div>
-                    </div>
-                </li>
-                <li class="sn__list__item">
-                    <div class="sn__btn-close"></div>
-                    <div class="sn__drag-handle"></div>
-                    <div class="sn__header">
-                        <div class="sn__header__item">
-                            <span class="sn__header__title">
-                                Перевод между своими картами
-                            </span>
-                            <a href="#" class="sn__btn-eye"></a>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-new" checked>
-                                    <label for="sn__tr-new"></label>
-                                </div>
-                                Новый
-                            </div>
-                        </div>
-                        <div class="sn__header__item">
-                            <div class="sn__header__item__parent">
-                                Родитель: <span>Переводы и платежи</span>
-                            </div>
-                            <div class="sn__checkbox-wrapper--border">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-main" checked>
-                                    <label for="sn__tr-main"></label>
-                                </div>
-                                Основной
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-erib" checked>
-                                    <label for="sn__tr-erib"></label>
-                                </div>
-                                ЕРИБ:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                <div class="sn__checkbox">
-                                    <input type="checkbox" id="sn__tr-pl" checked>
-                                    <label for="sn__tr-pl"></label>
-                                </div>
-                                PL:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__link-field" type="text" value="https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880">
-                        </div>
-                    </div>
-                    <div class="sn__row">
-                        <div class="sn__label">
-                            <div class="sn__label__inside">
-                                Код сервиса:
-                            </div>
-                        </div>
-                        <div class="sn__field">
-                            <input class="sn__service-code-field" type="text" value="Ght785we1">
-                        </div>
-                        <div class="sn__label">
-                            <div class="sn_label__tags">
-                                Тэги:
-                            </div>
-                        </div>
-                        <div class="sn__field sn__field--full-size">
-                            <input class="sn__tags-field" type="text" value="Переводы Платежи">
+                            <textarea class="sn__tags-field" type="text">Переводы Платежи</textarea>
                         </div>
                     </div>
                 </li>

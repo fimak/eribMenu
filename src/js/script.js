@@ -32,7 +32,7 @@ function renderServiceNavigation(navigation) {
     }
 
     serviceNavigation(navigation)
-    $('#service-tree-list').html(html);
+    $('#service-navigation-list').html(html);
 }
 
 //On Document Ready
@@ -42,7 +42,7 @@ $(document).ready(function() {
         success: function(response) {
             console.log('init success', response);
             renderServiceTree(response.tree)
-            renderServiceNavigation(response.navigation)
+            // renderServiceNavigation(response.navigation)
         },
         error: function() {
             console.log('init fail')

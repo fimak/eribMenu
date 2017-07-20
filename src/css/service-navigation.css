@@ -56,13 +56,14 @@
         display: none;
     }
 
-        .sn__btn-close {
+        .sn__btn-remove {
             position: absolute;
-            right: 12px;
-            top: 16px;
-            background: url("../img/cross.svg") no-repeat;
-            width: 8px;
-            height: 8px;
+            cursor: pointer;
+            right: 6px;
+            top: 10px;
+            background: url("../img/cross.svg") no-repeat center;
+            width: 20px;
+            height: 20px;
         }
 
         .sn__drag-handle {
@@ -144,32 +145,32 @@
                         opacity: 1;
                     }
 
-                    #sn__tr-hide {
+                    .sn__tr-hide {
                         width: 16px;
                         height: 11px;
                     }
-                    #sn__tr-hide + label:before {
+                    .sn__tr-hide + label:before {
                         width: 16px;
                         height: 11px;
                         background: url('../img/eye-show.svg') no-repeat;
                     }
-                    #sn__tr-hide + label:after {
+                    .sn__tr-hide + label:after {
                         width: 16px;
                         height: 11px;
                         background: url('../img/eye-hide.svg') no-repeat;
                         top: -1px;
                     }
 
-                    #sn__tr-new {
+                    .sn__tr-new {
                         width: 28px;
                         height: 12px;
                     }
-                    #sn__tr-new + label:before {
+                    .sn__tr-new + label:before {
                         width: 28px;
                         height: 12px;
                         background: url('../img/new-false.svg') no-repeat;
                     }
-                    #sn__tr-new + label:after {
+                    .sn__tr-new + label:after {
                         width: 28px;
                         height: 12px;
                         background: url('../img/new-true.svg') no-repeat;

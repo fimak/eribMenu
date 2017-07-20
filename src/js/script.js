@@ -25,23 +25,27 @@ function renderServiceTree (tree) {
 function renderServiceNavigation(navigation) {
     var html = ''
 
-    navigation.forEach(function(item) {
+    navigation.forEach(function(item, index) {
         html += '<li class="sn__list__item sn__list__item--expanded">'
-        + '<div class="sn__btn-close"></div><div class="sn__btn-close"></div>'
+        + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
         + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
-        + '<div class="sn__checkbox-image"><input type="checkbox" id="sn__tr-hide"><label for="sn__tr-hide"></label>'
-        + '</div></div><div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
-        + '<input type="checkbox" id="sn__tr-new"><label for="sn__tr-new"></label></div></div>'
-        + '<span class="sn__header__title" title="Развернуть">' + item.name + '</span></div></div>'
+        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '" ';
+        html += item.isHidden ? 'checked' : '';
+        html += '><label for="sn__tr-hide-' + index + '"></label></div></div>'
+        + '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
+        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + index + '" ';
+        html += item.isNew ? 'checked' : '';
+        html += '><label for="sn__tr-new-' + index + '"></label>'
+        + '</div></div><span class="sn__header__title" title="Развернуть">' + item.name + '</span></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" id="sn__tr-erib" ';
+        + '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + index + '" ';
         html += item.isErib ? 'checked' : '';
-        html += '><label for="sn__tr-erib"></label></div> ЕРИБ:</div></div><div class="sn__field">'
+        html += '><label for="sn__tr-erib-' + index + '"></label></div> ЕРИБ:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" id="sn__tr-pl" ';
+        + '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + index + '" ';
         html += item.isPL ? 'checked' : '';
-        html += '><label for="sn__tr-pl"></label></div> PL:</div></div><div class="sn__field">'
+        html += '><label for="sn__tr-pl-' + index + '"></label></div> PL:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>'
         + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
@@ -96,7 +100,23 @@ $(document).ready(function() {
         sn.find('.sn__header__title').attr('title', 'Развернуть');
     });
 
+    sn.on('click', '.sn__btn-remove', function() {
+        console.log('remove')
+        var element = $(this).closest('.service-navigation__item')
+        var id = element.data('id')
 
+        $.ajax({
+            url: 'src/response/remove.json',
+            data: {id: id},
+            success: function() {
+                console.log('remove success')
+                element.remove()
+            },
+            error: function() {
+                console.log('remove fail')
+            }
+        })
+    });
 
 
 
@@ -112,23 +132,4 @@ $(document).ready(function() {
     //     element.data('view', !element.data('view'))
     //     console.log(element.data('view'))
     // });
-    //
-    // table.on('click', '.trigger-remove', function() {
-    //     console.log('remove')
-    //     var element = $(this).closest('.service-navigation__item')
-    //     var id = element.data('id')
-    //
-    //     $.ajax({
-    //         url: 'src/response/remove.json',
-    //         data: {id: id},
-    //         success: function() {
-    //             console.log('remove success')
-    //             element.remove()
-    //         },
-    //         error: function() {
-    //             console.log('remove fail')
-    //         }
-    //     })
-    // });
-
 });

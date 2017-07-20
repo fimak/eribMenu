@@ -25,8 +25,12 @@
 
         <div class="service-navigation">
             <div class="sn__title">Переводы и платежи</div>
+            <div class="sn__expanding">
+                <span class="sn__expanding__text" id="sn__tr_expand">Развернуть все</span>
+                <span class="sn__expanding__text"  id="sn__tr_shrink">Свернуть все</span>
+            </div>
             <ul class="sn__list" id="service-navigation-list">
-                <li class="sn__list__item">
+                <li class="sn__list__item sn__list__item--expanded">
                     <div class="sn__btn-close"></div>
                     <div class="sn__drag-handle"></div>
                     <div class="sn__header">
@@ -43,7 +47,7 @@
                                     <label for="sn__tr-new"></label>
                                 </div>
                             </div>
-                            <span class="sn__header__title">
+                            <span class="sn__header__title" title="Развернуть">
                                 Перевод между своими картами
                             </span>
                         </div>

@@ -49,6 +49,21 @@ $(document).ready(function() {
         }
     })
 
+    var sn = $('#service-navigation-list');
+
+    sn.on('click', '.sn__header', function() {
+        console.log('expanding');
+        var listItem = $(this).parents('.sn__list__item');
+        var headerTitle = $(this).find('.sn__header__title');
+        if (listItem.hasClass('sn__list__item--expanded')) {
+            listItem.removeClass('sn__list__item--expanded');
+            headerTitle.attr('title', 'Свернуть');
+        } else {
+            listItem.addClass('sn__list__item--expanded');
+            headerTitle.attr('title', 'Развернуть');
+        }
+    });
+
 
 
 

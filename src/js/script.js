@@ -64,7 +64,14 @@ $(document).ready(function() {
         }
     });
 
-
+    $('#sn__tr-expand').click(function() {
+        sn.find('.sn__list__item').removeClass('sn__list__item--expanded');
+        sn.find('.sn__header__title').attr('title', 'Свернуть');
+    });
+    $('#sn__tr-shrink').click(function() {
+        sn.find('.sn__list__item').addClass('sn__list__item--expanded');
+        sn.find('.sn__header__title').attr('title', 'Развернуть');
+    });
 
 
 

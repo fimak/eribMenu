@@ -39,13 +39,16 @@
         min-width: 800px;
     }
     .sn__list__item--expanded {
+        background: #ffffff;
+    }
+    .sn__list__item--expanded {
         padding: 11px 33px 11px 19px;
     }
     .sn__list__item--expanded > .sn__header {
         margin: 0;
     }
-    .sn__list__item--expanded > .sn__header__title {
-        opacity: 0.5;
+    .sn__list__item--expanded .sn__header__title {
+        opacity: 1;
     }
     .sn__list__item--expanded > .sn__row {
         display: none;
@@ -89,6 +92,7 @@
                     font-family: Arial, sans-serif;
                     font-size: 16px;
                     line-height: 20px;
+                    opacity: 0.5;
                 }
 
                 .sn__checkbox-wrapper {

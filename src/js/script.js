@@ -25,13 +25,36 @@ function renderServiceTree (tree) {
 function renderServiceNavigation(navigation) {
     var html = ''
 
-    function serviceNavigation(navigation) {
-        navigation.forEach(function(item) {
+    navigation.forEach(function(item) {
+        html += '<li class="sn__list__item sn__list__item--expanded">'
+        + '<div class="sn__btn-close"></div><div class="sn__btn-close"></div>'
+        + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
+        + '<div class="sn__checkbox-image"><input type="checkbox" id="sn__tr-hide"><label for="sn__tr-hide"></label>'
+        + '</div></div><div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
+        + '<input type="checkbox" id="sn__tr-new"><label for="sn__tr-new"></label></div></div>'
+        + '<span class="sn__header__title" title="Развернуть">' + item.name + '</span></div></div>'
+        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
+        + '<input type="checkbox" id="sn__tr-erib" ';
+        html += item.isErib ? 'checked' : '';
+        html += '><label for="sn__tr-erib"></label></div> ЕРИБ:</div></div><div class="sn__field">'
+        + '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>'
+        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
+        + '<input type="checkbox" id="sn__tr-pl" ';
+        html += item.isPL ? 'checked' : '';
+        html += '><label for="sn__tr-pl"></label></div> PL:</div></div><div class="sn__field">'
+        + '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>'
+        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>'
+        + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
+        + '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>'
+        + '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">';
 
-        })
-    }
+        item.tags.forEach(function(item) {
+            html += item + ' ';
+        });
 
-    serviceNavigation(navigation)
+        html += '</textarea></div></div></li>';
+    })
+
     $('#service-navigation-list').html(html);
 }
 
@@ -42,7 +65,7 @@ $(document).ready(function() {
         success: function(response) {
             console.log('init success', response);
             renderServiceTree(response.tree)
-            // renderServiceNavigation(response.navigation)
+            renderServiceNavigation(response.navigation)
         },
         error: function() {
             console.log('init fail')

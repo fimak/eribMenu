@@ -26,7 +26,7 @@ function renderServiceNavigation(navigation) {
     var html = ''
 
     navigation.forEach(function(item, index) {
-        html += '<li class="sn__list__item sn__list__item--expanded">'
+        html += '<li class="sn__list__item sn__list__item--expanded" data-id="' + item.id + '">'
         + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
         + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
         + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '" ';
@@ -92,17 +92,19 @@ $(document).ready(function() {
     });
 
     $('#sn__tr-expand').click(function() {
+        console.log('expand');
         sn.find('.sn__list__item').removeClass('sn__list__item--expanded');
         sn.find('.sn__header__title').attr('title', 'Свернуть');
     });
     $('#sn__tr-shrink').click(function() {
+        console.log('shrink');
         sn.find('.sn__list__item').addClass('sn__list__item--expanded');
         sn.find('.sn__header__title').attr('title', 'Развернуть');
     });
 
     sn.on('click', '.sn__btn-remove', function() {
         console.log('remove')
-        var element = $(this).closest('.service-navigation__item')
+        var element = $(this).closest('.sn__list__item')
         var id = element.data('id')
 
         $.ajax({
@@ -118,18 +120,19 @@ $(document).ready(function() {
         })
     });
 
+    sn.sortable();
+    sn.disableSelection();
 
+    sn.on('sortupdate', function(event, ui) {
+        console.log('sorting');
+        var next = ui.item.next().data('id')
+    });
 
-
-
-
-    // var table = $('.service-navigation__table')
-    //
-    // table.on('click', '.trigger-view', function() {
-    //     console.log('view')
-    //     var element = $(this).closest('.service-navigation__item')
-    //     var id = element.data('id')
-    //     element.data('view', !element.data('view'))
-    //     console.log(element.data('view'))
-    // });
+    sn.on('click', '.sn__tr-hide', function() {
+        console.log('hiding')
+        var element = $(this).closest('.sn__list__item')
+        var id = element.data('id')
+        element.data('view', !element.data('view'))
+        console.log(element.data('view'))
+    });
 });

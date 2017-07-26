@@ -63,7 +63,7 @@
     font-size: 12px;
     line-height: 14px;
     color: #505050;
-
+    text-align: left;
 }
 .sa__services td {
     height: 30px;
@@ -72,4 +72,5 @@
     font-size: 12px;
     line-height: 14px;
     color: #56a027;
+    cursor: pointer;
 }

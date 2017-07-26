@@ -22,7 +22,7 @@ function renderServiceTree (tree) {
     $('#service-tree-list').html(html);
 }
 
-function renderServiceNavigation(navigation) {
+function buildServiceNavigation(navigation) {
     var html = ''
 
     navigation.forEach(function(item, index) {
@@ -59,7 +59,11 @@ function renderServiceNavigation(navigation) {
         html += '</textarea></div></div></li>';
     })
 
-    $('#service-navigation-list').html(html);
+    return html
+}
+
+function renderServiceNavigation(navigation) {
+    $('#service-navigation-list').html(buildServiceNavigation(navigation));
 }
 
 //On Document Ready
@@ -137,4 +141,29 @@ $(document).ready(function() {
         element.data('view', !element.data('view'))
         console.log(element.data('view'))
     });
+
+    var sa = $('.sa__services');
+
+    sa.on('click', 'td', function() {
+        var tr = $(this).parent()
+        var serviceName = $(tr.children()[0]).text()
+        var serviceCode = $(tr.children()[1]).text()
+        debugger
+        tr.remove()
+        sn.append(buildServiceNavigation([{
+            "id": +(new Date()),
+            "weight": +(new Date()),
+            "name": serviceName,
+            "isHidden": false,
+            "isNew": false,
+            "parent": 1,
+            "isMain": true,
+            "isErib": true,
+            "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "isPL": true,
+            "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "serviceCode": serviceCode,
+            "tags": [""]
+        }]))
+    })
 });

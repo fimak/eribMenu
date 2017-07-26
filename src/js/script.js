@@ -64,6 +64,8 @@ function renderServiceNavigation(navigation) {
 
 //On Document Ready
 $(document).ready(function() {
+    $(".sn__btn-add").colorbox({inline:true, width:"50%", opacity: 0.4});
+
     $.ajax({
         url: 'src/response/init.json',
         success: function(response) {

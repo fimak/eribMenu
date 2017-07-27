@@ -1,23 +1,25 @@
 function renderServiceTree (tree) {
-    var html = ''
+    var html = '<li class="st__item st__item--open"><a href="#">Web канал</a><ul class="st__list">'
 
     function serviceTreeBuild (tree) {
         tree.forEach(function(item) {
             if (item.children.length > 0) {
                 html += '<li class="st__item st__item--open">'
-                    + '<a href="#">' + item.name + '</a>'
+                    + '<a href="#">' + item.title + '</a>'
                     + '<ul class="st__list">';
                 serviceTreeBuild(item.children);
                 html += '</ul>';
             } else {
                 html += '<li class="st__item st__item--closed">'
-                    + '<a href="#">' + item.name + '</a>';
+                    + '<a href="#">' + item.title + '</a>';
             }
             html += '</li>';
         })
     }
 
     serviceTreeBuild(tree)
+
+    html += '</ul></li>'
 
     $('#service-tree-list').html(html);
 }
@@ -26,37 +28,32 @@ function buildServiceNavigation(navigation) {
     var html = ''
 
     navigation.forEach(function(item, index) {
-        html += '<li class="sn__list__item sn__list__item--expanded" data-id="' + item.id + '">'
+        html += '<li class="sn__list__item sn__list__item--expanded" data-id="' + item.serviceId + '">'
         + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
         + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
         + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '" ';
-        html += item.isHidden ? 'checked' : '';
+        html += item.hidden ? 'checked' : '';
         html += '><label for="sn__tr-hide-' + index + '"></label></div></div>'
         + '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
         + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + index + '" ';
-        html += item.isNew ? 'checked' : '';
+        html += item.novelty ? 'checked' : '';
         html += '><label for="sn__tr-new-' + index + '"></label>'
-        + '</div></div><span class="sn__header__title" title="Развернуть">' + item.name + '</span></div></div>'
+        + '</div></div><span class="sn__header__title" title="Развернуть">' + item.title + '</span></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
         + '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + index + '" ';
-        html += item.isErib ? 'checked' : '';
+        html += item.eribEnabled ? 'checked' : '';
         html += '><label for="sn__tr-erib-' + index + '"></label></div> ЕРИБ:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
         + '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + index + '" ';
-        html += item.isPL ? 'checked' : '';
+        html += item.plEnabled ? 'checked' : '';
         html += '><label for="sn__tr-pl-' + index + '"></label></div> PL:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>'
         + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
         + '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>'
-        + '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">';
-
-        item.tags.forEach(function(item) {
-            html += item + ' ';
-        });
-
-        html += '</textarea></div></div></li>';
+        + '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">'
+        + item.tags + '</textarea></div></div></li>';
     })
 
     return html
@@ -148,19 +145,17 @@ $(document).ready(function() {
         var tr = $(this).parent()
         var serviceName = $(tr.children()[0]).text()
         var serviceCode = $(tr.children()[1]).text()
-        debugger
         tr.remove()
         sn.append(buildServiceNavigation([{
             "id": +(new Date()),
-            "weight": +(new Date()),
-            "name": serviceName,
-            "isHidden": false,
-            "isNew": false,
+            "title": serviceName,
+            "hidden": false,
+            "novelty": false,
             "parent": 1,
-            "isMain": true,
-            "isErib": true,
+            "master": true,
+            "eribEnabled": true,
             "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-            "isPL": true,
+            "plEnabled": true,
             "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
             "serviceCode": serviceCode,
             "tags": [""]

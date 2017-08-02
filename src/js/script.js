@@ -123,7 +123,11 @@ $(document).ready(function() {
         })
     });
 
-    sn.sortable();
+    sn.sortable({
+        axis: 'y',
+        cursor: 'move',
+        handle: '.sn__drag-handle'
+    });
     sn.disableSelection();
 
     sn.on('sortupdate', function(event, ui) {
@@ -141,7 +145,7 @@ $(document).ready(function() {
 
     var sa = $('.sa__services');
 
-    sa.on('click', 'td', function() {
+    sa.on('dblclick', 'td', function() {
         var tr = $(this).parent()
         var serviceName = $(tr.children()[0]).text()
         var serviceCode = $(tr.children()[1]).text()

@@ -70,11 +70,11 @@
             position: absolute;
             left: 0;
             top: 50%;
-            margin-top: -10px;
-            width: 10px;
-            height: 19px;
-            background: url("../img/drag-handle.svg") no-repeat center;
-            cursor: pointer;
+            margin-top: -16px;
+            width: 16px;
+            height: 31px;
+            background: url("../img/drag-handle.svg") no-repeat 4px center;
+            cursor: move;
         }
 
         .sn__header {

@@ -40,19 +40,19 @@
     .sn__list__item:not(:first-child) {
         margin-top: -1px;
     }
-    .sn__list__item--expanded {
+    .sn__list__item--minimized {
         background: #ffffff;
     }
-    .sn__list__item--expanded {
+    .sn__list__item--minimized {
         padding: 11px 33px 11px 19px;
     }
-    .sn__list__item--expanded > .sn__header {
+    .sn__list__item--minimized > .sn__header {
         margin: 0;
     }
-    .sn__list__item--expanded .sn__header__title {
+    .sn__list__item--minimized .sn__header__title {
         opacity: 1;
     }
-    .sn__list__item--expanded > .sn__row {
+    .sn__list__item--minimized > .sn__row {
         display: none;
     }
 

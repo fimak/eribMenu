@@ -28,14 +28,14 @@ function buildServiceNavigation(navigation) {
     var html = ''
 
     navigation.forEach(function(item, index) {
-        html += '<li class="sn__list__item sn__list__item--expanded" data-id="' + item.serviceId + '">'
+        html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">'
         + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
         + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
-        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '" ';
+        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '"';
         html += item.hidden ? 'checked' : '';
         html += '><label for="sn__tr-hide-' + index + '"></label></div></div>'
         + '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
-        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + index + '" ';
+        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + index + '"';
         html += item.novelty ? 'checked' : '';
         html += '><label for="sn__tr-new-' + index + '"></label>'
         + '</div></div><span class="sn__header__title" title="Развернуть">' + item.title + '</span></div></div>'
@@ -63,7 +63,12 @@ function renderServiceNavigation(navigation) {
     $('#service-navigation-list').html(buildServiceNavigation(navigation));
 }
 
-//On Document Ready
+function addNewService() {
+
+}
+
+
+//--- On Document Ready ---//
 $(document).ready(function() {
     $(".sn__btn-add").colorbox({inline:true, width:"50%", opacity: 0.4});
 
@@ -79,29 +84,35 @@ $(document).ready(function() {
         }
     })
 
+    // get the object of navigation list
     var sn = $('#service-navigation-list');
 
+
+    // Toggle list item
     sn.on('click', '.sn__header', function() {
-        console.log('expanding');
+        console.log('toggling');
         var listItem = $(this).parents('.sn__list__item');
         var headerTitle = $(this).find('.sn__header__title');
-        if (listItem.hasClass('sn__list__item--expanded')) {
-            listItem.removeClass('sn__list__item--expanded');
+        if (listItem.hasClass('sn__list__item--minimized')) {
+            listItem.removeClass('sn__list__item--minimized');
             headerTitle.attr('title', 'Свернуть');
         } else {
-            listItem.addClass('sn__list__item--expanded');
+            listItem.addClass('sn__list__item--minimized');
             headerTitle.attr('title', 'Развернуть');
         }
     });
 
+    // Expand list items
     $('#sn__tr-expand').click(function() {
         console.log('expand');
-        sn.find('.sn__list__item').removeClass('sn__list__item--expanded');
+        sn.find('.sn__list__item').removeClass('sn__list__item--minimized');
         sn.find('.sn__header__title').attr('title', 'Свернуть');
+
     });
+    // Shrink list items
     $('#sn__tr-shrink').click(function() {
         console.log('shrink');
-        sn.find('.sn__list__item').addClass('sn__list__item--expanded');
+        sn.find('.sn__list__item').addClass('sn__list__item--minimized');
         sn.find('.sn__header__title').attr('title', 'Развернуть');
     });
 
@@ -135,7 +146,9 @@ $(document).ready(function() {
         var next = ui.item.next().data('id')
     });
 
-    sn.on('click', '.sn__tr-hide', function() {
+    var snm = '.sn__list__item:not(.sn__list__item--minimized)';
+
+    snm.on('click', '.sn__tr-hide', function() {
         console.log('hiding')
         var element = $(this).closest('.sn__list__item')
         var id = element.data('id')

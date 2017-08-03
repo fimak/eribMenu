@@ -1,12 +1,3 @@
-.service-add-wrapper {
-    display: none;
-}
-#service-add {
-    border-radius: 4px;
-    padding: 21px 42px;
-    background: #fff;
-}
-
 .sa__title {
     font-family: Arial, sans-serif;
     font-size: 20px;

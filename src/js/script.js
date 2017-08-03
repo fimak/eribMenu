@@ -24,7 +24,7 @@ function renderServiceTree (tree) {
     $('#service-tree-list').html(html);
 }
 
-function buildServiceNavigation(navigation) {
+function buildServiceNavigation (navigation) {
     var html = ''
 
     navigation.forEach(function(item, index) {
@@ -59,19 +59,44 @@ function buildServiceNavigation(navigation) {
     return html
 }
 
-function renderServiceNavigation(navigation) {
+function renderServiceNavigation (navigation) {
     $('#service-navigation-list').html(buildServiceNavigation(navigation));
 }
 
-function addNewService() {
+function addNewServiceRequest () {
 
+}
+
+function removeServiceRequest (id, element) {
+    $.ajax({
+        url: 'src/response/remove.json',
+        data: {id: id},
+        success: function() {
+            console.log('remove success')
+            element.remove()
+        },
+        error: function() {
+            console.log('remove fail')
+        }
+    })
 }
 
 
 //--- On Document Ready ---//
 $(document).ready(function() {
+    // get the object of navigation list
+    var sn = $('#service-navigation-list');
+    // get the object of expanded navigation list item
+    var snm = $('.sn__list__item:not(.sn__list__item--minimized)');
+    // get the object of service add table
+    var sa = $('.sa__services');
+
+
+    // colorbox configuration
     $(".sn__btn-add").colorbox({inline:true, width:"50%", opacity: 0.4});
 
+
+    //initial request to get the tree
     $.ajax({
         url: 'src/response/init.json',
         success: function(response) {
@@ -83,9 +108,6 @@ $(document).ready(function() {
             console.log('init fail')
         }
     })
-
-    // get the object of navigation list
-    var sn = $('#service-navigation-list');
 
 
     // Toggle list item
@@ -102,6 +124,7 @@ $(document).ready(function() {
         }
     });
 
+
     // Expand list items
     $('#sn__tr-expand').click(function() {
         console.log('expand');
@@ -116,38 +139,52 @@ $(document).ready(function() {
         sn.find('.sn__header__title').attr('title', 'Развернуть');
     });
 
+
+    // Remove element from tree
     sn.on('click', '.sn__btn-remove', function() {
         console.log('remove')
         var element = $(this).closest('.sn__list__item')
         var id = element.data('id')
 
-        $.ajax({
-            url: 'src/response/remove.json',
-            data: {id: id},
-            success: function() {
-                console.log('remove success')
-                element.remove()
-            },
-            error: function() {
-                console.log('remove fail')
-            }
+
+
+        $.colorbox({
+            width:"50%",
+            opacity: 0.4,
+            html: '<div class="popup">' +
+            '<h1 class="popup__title">Вы уверены что хотите удалить сервис?</h1>' +
+            '<div>' +
+            '<button class="confirm-yes">Да</button>' +
+            '<button class="confirm-no">Нет</button></div>' +
+            '</div>'
+        });
+
+        $('.confirm-yes').on('click', function() {
+            removeServiceRequest(id, element)
+            $.colorbox.close()
+        })
+
+        $('.confirm-no').on('click', function() {
+            $.colorbox.close()
         })
     });
 
+
+    // sortable configuration
     sn.sortable({
         axis: 'y',
         cursor: 'move',
         handle: '.sn__drag-handle'
     });
     sn.disableSelection();
-
+    // callback on sortupdate
     sn.on('sortupdate', function(event, ui) {
         console.log('sorting');
         var next = ui.item.next().data('id')
     });
 
-    var snm = '.sn__list__item:not(.sn__list__item--minimized)';
 
+    // Hide / Set invision to true
     snm.on('click', '.sn__tr-hide', function() {
         console.log('hiding')
         var element = $(this).closest('.sn__list__item')
@@ -156,8 +193,8 @@ $(document).ready(function() {
         console.log(element.data('view'))
     });
 
-    var sa = $('.sa__services');
 
+    // Insert item to tree
     sa.on('dblclick', 'td', function() {
         var tr = $(this).parent()
         var serviceName = $(tr.children()[0]).text()
@@ -177,5 +214,5 @@ $(document).ready(function() {
             "serviceCode": serviceCode,
             "tags": [""]
         }]))
-    })
+    });
 });

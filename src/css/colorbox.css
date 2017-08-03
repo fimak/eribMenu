@@ -155,3 +155,7 @@
 #cboxClose:hover {
     opacity: 0.75;
 }
+
+.colorbox-wrapper {
+    display: none;
+}

@@ -7,3 +7,16 @@ body {
     flex-direction: row;
     font-family: Arial, sans-serif;
 }
+
+.popup {
+    border-radius: 4px;
+    padding: 21px 42px;
+    background: #fff;
+}
+
+.popup__title {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 0 0 20px 0;
+}

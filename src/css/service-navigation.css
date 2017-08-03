@@ -36,6 +36,8 @@
         border: solid 1px #dcdcdc;
         position: relative;
         min-width: 800px;
+        z-index: 2;
+
     }
     .sn__list__item:not(:first-child) {
         margin-top: -1px;
@@ -54,6 +56,9 @@
     }
     .sn__list__item--minimized > .sn__row {
         display: none;
+    }
+    .sn__list__item--minimized .sn__checkbox-wrapper {
+        z-index: -1;
     }
 
         .sn__btn-remove {

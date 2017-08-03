@@ -1,6 +1,7 @@
 .service-navigation {
     margin-top: 28px;
     position: relative;
+    min-width: 854px;
 }
 /* service-navigation = sn */
 

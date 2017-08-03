@@ -1,0 +1,27 @@
+{
+  "status": {
+    "code": 0,
+    "errors": [],
+    "warnings": []
+  },
+  "serviceList": [
+    {
+      "serviceId": 13333333,
+      "serviceName": "Новый сервис",
+      "serviceKey": "new",
+      "serviceListId": 321123
+    },
+    {
+      "serviceId": 12333333,
+      "serviceName": "Новый сервис 2!",
+      "serviceKey": "new2",
+      "serviceListId": 322123
+    },
+    {
+      "serviceId": 12233333,
+      "serviceName": "Новый сервис 3 !!!!!",
+      "serviceKey": "new3",
+      "serviceListId": 322323
+    }
+  ]
+}

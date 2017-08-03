@@ -67,47 +67,81 @@ function addNewServiceRequest () {
 
 }
 
-function removeServiceRequest (id, element) {
+function deleteServiceRequest (id, element) {
     $.ajax({
-        url: 'src/response/remove.json',
+        url: 'src/response/deleteElement.json',
         data: {id: id},
         success: function() {
-            console.log('remove success')
+            console.log('delete success')
             element.remove()
         },
         error: function() {
-            console.log('remove fail')
+            console.warn('remove fail')
+        }
+    })
+}
+
+function treeInitRequest() {
+    $.ajax({
+        url: 'src/response/init.json',
+        success: function(response) {
+            console.log('init success', response);
+            window.tree = response.tree
+            renderServiceTree(response.tree)
+            renderServiceNavigation(response.navigation)
+        },
+        error: function() {
+            console.warn('init fail')
+        }
+    })
+}
+
+function selectServiceListRequest() {
+    $.ajax({
+        url: 'src/response/selectServiceList.json',
+        success: function(response) {
+            console.log('select service list success', response)
+            window.serviceList = response.serviceList
+        },
+        error: function() {
+            console.warn('select service list fail')
         }
     })
 }
 
 
-//--- On Document Ready ---//
+
+//------- On Document Ready -------//
 $(document).ready(function() {
+    // Initial request to get the tree / keep data in the window.tree
+    treeInitRequest()
+    // Get service list
+    selectServiceListRequest()
+
     // get the object of navigation list
     var sn = $('#service-navigation-list');
     // get the object of expanded navigation list item
     var snm = $('.sn__list__item:not(.sn__list__item--minimized)');
-    // get the object of service add table
-    var sa = $('.sa__services');
 
 
-    // colorbox configuration
-    $(".sn__btn-add").colorbox({inline:true, width:"50%", opacity: 0.4});
+    window.currCategory = {
+        id: 1,
+        name: 'Переводы и платежи'
+    }
 
 
-    //initial request to get the tree
-    $.ajax({
-        url: 'src/response/init.json',
-        success: function(response) {
-            console.log('init success', response);
-            renderServiceTree(response.tree)
-            renderServiceNavigation(response.navigation)
-        },
-        error: function() {
-            console.log('init fail')
-        }
-    })
+    // Sortable configuration
+    sn.sortable({
+        axis: 'y',
+        cursor: 'move',
+        handle: '.sn__drag-handle'
+    });
+    sn.disableSelection();
+    // Callback on sortUpdate
+    sn.on('sortupdate', function(event, ui) {
+        console.log('sorting');
+        var next = ui.item.next().data('id')
+    });
 
 
     // Toggle list item
@@ -140,13 +174,11 @@ $(document).ready(function() {
     });
 
 
-    // Remove element from tree
+    // Delete element from tree
     sn.on('click', '.sn__btn-remove', function() {
         console.log('remove')
         var element = $(this).closest('.sn__list__item')
         var id = element.data('id')
-
-
 
         $.colorbox({
             width:"50%",
@@ -160,7 +192,7 @@ $(document).ready(function() {
         });
 
         $('.confirm-yes').on('click', function() {
-            removeServiceRequest(id, element)
+            deleteServiceRequest(id, element)
             $.colorbox.close()
         })
 
@@ -170,21 +202,7 @@ $(document).ready(function() {
     });
 
 
-    // sortable configuration
-    sn.sortable({
-        axis: 'y',
-        cursor: 'move',
-        handle: '.sn__drag-handle'
-    });
-    sn.disableSelection();
-    // callback on sortupdate
-    sn.on('sortupdate', function(event, ui) {
-        console.log('sorting');
-        var next = ui.item.next().data('id')
-    });
-
-
-    // Hide / Set invision to true
+    // Hide / Set visibility to true
     snm.on('click', '.sn__tr-hide', function() {
         console.log('hiding')
         var element = $(this).closest('.sn__list__item')
@@ -194,8 +212,32 @@ $(document).ready(function() {
     });
 
 
+    // Add service
+    $('.sn__btn-add').on('click', function() {
+        var html = '<div id="service-add" class="popup"><div class="sa__title">' +
+            'Добавить сервис в ' + window.currCategory.name + '</div>' +
+            '<div class="sa__search"><input type="text" class="sa__search__form" placeholder="Поиск">' +
+            '<a href="#" class="sa__search__button">' +
+            '<img src="img/loupe.svg" alt="loupe" class="sa__search__button__image">' +
+            '</a></div><table class="sa__services">' +
+            '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
+
+        window.serviceList.map(function(el) {
+            html += '<tr><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
+        })
+
+        html += '</table></div>';
+
+        $.colorbox({
+            width:"50%",
+            opacity: 0.4,
+            html: html
+        })
+    });
+
+
     // Insert item to tree
-    sa.on('dblclick', 'td', function() {
+    $('body').on('dblclick', '.sa__services td', function() {
         var tr = $(this).parent()
         var serviceName = $(tr.children()[0]).text()
         var serviceCode = $(tr.children()[1]).text()

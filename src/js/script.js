@@ -63,8 +63,17 @@ function renderServiceNavigation (navigation) {
     $('#service-navigation-list').html(buildServiceNavigation(navigation));
 }
 
-function addNewServiceRequest () {
-
+function insertElementRequest (parentId, service) {
+    return $.ajax({
+        url: 'src/response/insertElement.json',
+        data: {
+            parentServiceTreeId: parentId,
+            descriptionTreeElement: service
+        },
+        success: function() {
+            console.log('InsertElement success')
+        }
+    })
 }
 
 function deleteServiceRequest (id, element) {
@@ -97,11 +106,10 @@ function treeInitRequest() {
 }
 
 function selectServiceListRequest() {
-    $.ajax({
+    return $.ajax({
         url: 'src/response/selectServiceList.json',
         success: function(response) {
             console.log('select service list success', response)
-            window.serviceList = response.serviceList
         },
         error: function() {
             console.warn('select service list fail')
@@ -115,8 +123,7 @@ function selectServiceListRequest() {
 $(document).ready(function() {
     // Initial request to get the tree / keep data in the window.tree
     treeInitRequest()
-    // Get service list
-    selectServiceListRequest()
+
 
     // get the object of navigation list
     var sn = $('#service-navigation-list');
@@ -185,7 +192,7 @@ $(document).ready(function() {
             opacity: 0.4,
             html: '<div class="popup">' +
             '<h1 class="popup__title">Вы уверены что хотите удалить сервис?</h1>' +
-            '<div>' +
+            '<div class="popup__confirmation">' +
             '<button class="confirm-yes">Да</button>' +
             '<button class="confirm-no">Нет</button></div>' +
             '</div>'
@@ -214,24 +221,27 @@ $(document).ready(function() {
 
     // Add service
     $('.sn__btn-add').on('click', function() {
-        var html = '<div id="service-add" class="popup"><div class="sa__title">' +
-            'Добавить сервис в ' + window.currCategory.name + '</div>' +
-            '<div class="sa__search"><input type="text" class="sa__search__form" placeholder="Поиск">' +
-            '<a href="#" class="sa__search__button">' +
-            '<img src="img/loupe.svg" alt="loupe" class="sa__search__button__image">' +
-            '</a></div><table class="sa__services">' +
-            '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
+        selectServiceListRequest()
+            .done(function(data) {
+                var html = '<div id="service-add" class="popup"><div class="sa__title">' +
+                    'Добавить сервис в ' + window.currCategory.name + '</div>' +
+                    '<div class="sa__search"><input type="text" class="sa__search__form" placeholder="Поиск">' +
+                    '<a href="#" class="sa__search__button">' +
+                    '<img src="img/loupe.svg" alt="loupe" class="sa__search__button__image">' +
+                    '</a></div><table class="sa__services">' +
+                    '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
 
-        window.serviceList.map(function(el) {
-            html += '<tr><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
-        })
+                data.serviceList.map(function(el) {
+                    html += '<tr data-id="' + el.serviceId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
+                })
 
-        html += '</table></div>';
+                html += '</table></div>';
 
-        $.colorbox({
-            width:"50%",
-            opacity: 0.4,
-            html: html
+                $.colorbox({
+                    width:"50%",
+                    opacity: 0.4,
+                    html: html
+                })
         })
     });
 
@@ -239,22 +249,29 @@ $(document).ready(function() {
     // Insert item to tree
     $('body').on('dblclick', '.sa__services td', function() {
         var tr = $(this).parent()
+        var serviceId = tr.data('serviceId')
         var serviceName = $(tr.children()[0]).text()
         var serviceCode = $(tr.children()[1]).text()
-        tr.remove()
-        sn.append(buildServiceNavigation([{
-            "id": +(new Date()),
+
+        var service = {
+            "id": serviceId,
             "title": serviceName,
-            "hidden": false,
-            "novelty": false,
-            "parent": 1,
+            "hidden": true,
+            "novelty": true,
+            "parent": window.currCategory.id,
             "master": true,
-            "eribEnabled": true,
-            "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-            "plEnabled": true,
-            "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "eribEnabled": false,
+            "eribUrl": "",
+            "plEnabled": false,
+            "plUrl": "",
             "serviceCode": serviceCode,
             "tags": [""]
-        }]))
+        }
+
+        insertElementRequest(window.currCategory.id, service)
+            .done(function() {
+                tr.remove()
+                sn.append(buildServiceNavigation([service]))
+            })
     });
 });

@@ -20,3 +20,12 @@ body {
     line-height: 26px;
     margin: 0 0 20px 0;
 }
+
+.popup__confirmation {
+    text-align: center;
+}
+
+.popup__confirmation button {
+    padding: 10px;
+    margin: 0 10px;
+}

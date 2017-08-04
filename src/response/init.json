@@ -1,4 +1,9 @@
 {
+  "status": {
+    "code": 0,
+    "errors": [],
+    "warnings": []
+  },
   "navigation": [
     {
       "serviceId": 0,

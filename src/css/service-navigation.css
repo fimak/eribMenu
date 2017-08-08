@@ -290,7 +290,8 @@
                     width: 50%;
                 }
 
-.sn__btn-add {
+.sn__btn-add,
+.sn__btn-save{
     display: inline-block;
     padding: 5px 16px 7px 16px;
     border-radius: 2px;

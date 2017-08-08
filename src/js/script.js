@@ -53,7 +53,8 @@ function buildServiceNavigation (navigation) {
         + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
         + '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>'
         + '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">'
-        + item.tags + '</textarea></div></div></li>';
+        + item.tags + '</textarea></div></div><div class="sn__row"><div class="sn__label"></div>'
+        + '<a class="sn__btn-save" data-id="' + item.serviceId + '" href="#save">Сохранить</a></div></li>';
     })
 
     return html
@@ -65,6 +66,7 @@ function renderServiceNavigation (navigation) {
 
 function insertElementRequest (parentId, service) {
     return $.ajax({
+        type: 'POST',
         url: 'src/response/insertElement.json',
         data: {
             parentServiceTreeId: parentId,
@@ -78,6 +80,7 @@ function insertElementRequest (parentId, service) {
 
 function deleteServiceRequest (id, element) {
     $.ajax({
+        type: 'POST',
         url: 'src/response/deleteElement.json',
         data: {id: id},
         success: function() {
@@ -90,7 +93,7 @@ function deleteServiceRequest (id, element) {
     })
 }
 
-function treeInitRequest() {
+function treeInitRequest () {
     $.ajax({
         url: 'src/response/init.json',
         success: function(response) {
@@ -105,7 +108,7 @@ function treeInitRequest() {
     })
 }
 
-function selectServiceListRequest() {
+function selectServiceListRequest () {
     return $.ajax({
         url: 'src/response/selectServiceList.json',
         success: function(response) {
@@ -113,6 +116,23 @@ function selectServiceListRequest() {
         },
         error: function() {
             console.warn('select service list fail')
+        }
+    })
+}
+
+function updateServiceRequest (parentId, service) {
+    return $.ajax({
+        type: 'POST',
+        url: 'src/response/updateElement.json',
+        data: {
+            parentServicesTreeId: parentId,
+            descriptionTreeElement: service
+        },
+        success: function(response) {
+            console.log('edit service success', response)
+        },
+        error: function() {
+            console.watn('edit service fail')
         }
     })
 }
@@ -209,7 +229,7 @@ $(document).ready(function() {
     });
 
 
-    // Hide / Set visibility to true
+    // Hide / Show / Set visibility
     snm.on('click', '.sn__tr-hide', function() {
         console.log('hiding')
         var element = $(this).closest('.sn__list__item')
@@ -220,7 +240,8 @@ $(document).ready(function() {
 
 
     // Add service
-    $('.sn__btn-add').on('click', function() {
+    $('.sn__btn-add').on('click', function(event) {
+        event.preventDefault()
         selectServiceListRequest()
             .done(function(data) {
                 var html = '<div id="service-add" class="popup"><div class="sa__title">' +
@@ -270,8 +291,33 @@ $(document).ready(function() {
 
         insertElementRequest(window.currCategory.id, service)
             .done(function() {
-                tr.remove()
+                // findTreeItem()
+                // moveTreeItem()
                 sn.append(buildServiceNavigation([service]))
+                $.colorbox.close()
             })
+    });
+
+
+    // Edit tree element
+    sn.on('click', '.sn__btn-save', function(event) {
+        event.preventDefault()
+        var id = $(this).data('id')
+        var service = {
+            listId: '2',
+            serviceId: '2',
+            treeId: '2',
+            title: 'title',
+            eribEnabled: true,
+            eribUrl: '',
+            plEnabled: false,
+            plUrl: '',
+            novelty: '',
+            master: '',
+            hidden: '',
+            tags: '',
+            serviceCode: ''
+        }
+        updateServiceRequest(window.currCategory, service)
     });
 });

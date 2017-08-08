@@ -4,49 +4,6 @@
     "errors": [],
     "warnings": []
   },
-  "navigation": [
-    {
-      "serviceId": 0,
-      "title": "Перевод между своими картами",
-      "hidden": false,
-      "novelty": false,
-      "master": true,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Платежи"
-    },
-    {
-      "serviceId": 1,
-      "title": "Перевод на карту в другом банке",
-      "hidden": true,
-      "novelty": false,
-      "parent": 1,
-      "master": true,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Банк"
-    },
-    {
-      "serviceId": 2,
-      "title": "Перевод клиенту Сбербанка",
-      "hidden": false,
-      "novelty": true,
-      "parent": 1,
-      "master": false,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Клиент"
-    }
-  ],
   "tree": [
     {
       "title": "Переводы и платежи",
@@ -97,6 +54,49 @@
     {
       "title": "Госуслуги",
       "children": []
+    }
+  ],
+  "navigation": [
+    {
+      "serviceId": 0,
+      "title": "Перевод между своими картами",
+      "hidden": false,
+      "novelty": false,
+      "master": true,
+      "eribEnabled": true,
+      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "plEnabled": true,
+      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "serviceCode": "transfer_client_sberbank",
+      "tags": "Перевод; Платежи"
+    },
+    {
+      "serviceId": 1,
+      "title": "Перевод на карту в другом банке",
+      "hidden": true,
+      "novelty": false,
+      "parent": 1,
+      "master": true,
+      "eribEnabled": true,
+      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "plEnabled": true,
+      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "serviceCode": "transfer_client_sberbank",
+      "tags": "Перевод; Банк"
+    },
+    {
+      "serviceId": 2,
+      "title": "Перевод клиенту Сбербанка",
+      "hidden": false,
+      "novelty": true,
+      "parent": 1,
+      "master": false,
+      "eribEnabled": true,
+      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "plEnabled": true,
+      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+      "serviceCode": "transfer_client_sberbank",
+      "tags": "Перевод; Клиент"
     }
   ]
 }

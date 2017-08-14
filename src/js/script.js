@@ -40,7 +40,7 @@ function renderServiceTree (tree) {
  */
 function buildServiceNavigation (navigation) {
     var html = ''
-debugger
+
     if (navigation) {
         navigation.forEach(function(item) {
             html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">' +
@@ -144,6 +144,8 @@ function setCurrentCategory(id, title) {
         id: id,
         name: title
     }
+
+    $('.sn__title').text(title);
 }
 
 /**

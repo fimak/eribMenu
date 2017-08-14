@@ -1,13 +1,14 @@
 function renderServiceTree (tree) {
-    var html = '<li class="st__item st__item--open"><a href="#">Web канал</a><ul class="st__list">'
+    var html = '<li class="st__item st__item--open"><a href="#">' + tree.title + '</a><ul class="st__list">'
 
     function serviceTreeBuild (tree) {
-        tree.forEach(function(item) {
+        tree.children.forEach(function(item) {
+            console.log(item)
             if (item.children.length > 0) {
                 html += '<li class="st__item st__item--open">'
                     + '<a href="#">' + item.title + '</a>'
                     + '<ul class="st__list">';
-                serviceTreeBuild(item.children);
+                serviceTreeBuild(item);
                 html += '</ul>';
             } else {
                 html += '<li class="st__item st__item--closed">'
@@ -27,27 +28,27 @@ function renderServiceTree (tree) {
 function buildServiceNavigation (navigation) {
     var html = ''
 
-    navigation.forEach(function(item, index) {
+    navigation.forEach(function(item) {
         html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">'
         + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
         + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
-        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + index + '"';
+        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';
         html += item.hidden ? 'checked' : '';
-        html += '><label for="sn__tr-hide-' + index + '"></label></div></div>'
+        html += '><label for="sn__tr-hide-' + item.serviceId + '"></label></div></div>'
         + '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
-        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + index + '"';
+        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + item.serviceId + '"';
         html += item.novelty ? 'checked' : '';
-        html += '><label for="sn__tr-new-' + index + '"></label>'
+        html += '><label for="sn__tr-new-' + item.serviceId + '"></label>'
         + '</div></div><span class="sn__header__title" title="Развернуть">' + item.title + '</span></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + index + '" ';
+        + '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + item.serviceId + '" ';
         html += item.eribEnabled ? 'checked' : '';
-        html += '><label for="sn__tr-erib-' + index + '"></label></div> ЕРИБ:</div></div><div class="sn__field">'
+        html += '><label for="sn__tr-erib-' + item.serviceId + '"></label></div> ЕРИБ:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + index + '" ';
+        + '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + item.serviceId + '" ';
         html += item.plEnabled ? 'checked' : '';
-        html += '><label for="sn__tr-pl-' + index + '"></label></div> PL:</div></div><div class="sn__field">'
+        html += '><label for="sn__tr-pl-' + item.serviceId + '"></label></div> PL:</div></div><div class="sn__field">'
         + '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>'
         + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>'
         + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
@@ -270,12 +271,13 @@ $(document).ready(function() {
     // Insert item to tree
     $('body').on('dblclick', '.sa__services td', function() {
         var tr = $(this).parent()
-        var serviceId = tr.data('serviceId')
+        var serviceId = tr.data('id')
         var serviceName = $(tr.children()[0]).text()
         var serviceCode = $(tr.children()[1]).text()
 
         var service = {
             "id": serviceId,
+            "serviceId": serviceId,
             "title": serviceName,
             "hidden": true,
             "novelty": true,
@@ -307,16 +309,16 @@ $(document).ready(function() {
             listId: '2',
             serviceId: '2',
             treeId: '2',
-            title: 'title',
+            title: 'Перевод на карту в другом банке',
             eribEnabled: true,
-            eribUrl: '',
+            eribUrl: 'https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880',
             plEnabled: false,
-            plUrl: '',
-            novelty: '',
+            plUrl: 'https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880',
+            novelty: true,
             master: '',
-            hidden: '',
-            tags: '',
-            serviceCode: ''
+            hidden: true,
+            tags: 'Перевод; Банк;',
+            serviceCode: 'transfer_client_sberbank'
         }
         updateServiceRequest(window.currCategory, service)
     });

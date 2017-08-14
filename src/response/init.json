@@ -4,99 +4,167 @@
     "errors": [],
     "warnings": []
   },
-  "tree": [
-    {
-      "title": "Переводы и платежи",
-      "children": [
-        {
-          "title": "Перевод между своими картами",
-          "children": []
-        },
-        {
-          "title": "Перевод на карту в другом банке",
-          "children": []
-        },
-        {
-          "title": "Перевод клиенту Сбербанка",
-          "children": []
-        }
-      ]
-    },
-    {
-      "title": "Карты",
-      "children": [
-        {
-          "title": "Дебетовые карты",
-          "children": []
-        },
-        {
-          "title": "Заявка на оформление новой карты",
-          "children": []
-        },
-        {
-          "title": "Блокировка/разблокировка карты",
-          "children": []
-        }
-      ]
-    },
-    {
-      "title": "Кредиты",
-      "children": []
-    },
-    {
-      "title": "Страховки",
-      "children": []
-    },
-    {
-      "title": "Инвестиции",
-      "children": []
-    },
-    {
-      "title": "Госуслуги",
-      "children": []
-    }
-  ],
-  "navigation": [
-    {
-      "serviceId": 0,
-      "title": "Перевод между своими картами",
-      "hidden": false,
-      "novelty": false,
-      "master": true,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Платежи"
-    },
-    {
-      "serviceId": 1,
-      "title": "Перевод на карту в другом банке",
-      "hidden": true,
-      "novelty": false,
-      "parent": 1,
-      "master": true,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Банк"
-    },
-    {
-      "serviceId": 2,
-      "title": "Перевод клиенту Сбербанка",
-      "hidden": false,
-      "novelty": true,
-      "parent": 1,
-      "master": false,
-      "eribEnabled": true,
-      "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "plEnabled": true,
-      "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
-      "serviceCode": "transfer_client_sberbank",
-      "tags": "Перевод; Клиент"
-    }
-  ]
+  "tree": {
+    "listId": 1,
+    "serviceId": 1,
+    "treeId": 1,
+    "title": "Web канал",
+    "eribEnabled": true,
+    "eribUrl": "",
+    "plEnabled": true,
+    "plUrl": "",
+    "novelty": false,
+    "master": true,
+    "hidden": false,
+    "tags": "",
+    "serviceCode": "",
+    "children": [
+      {
+        "title": "Переводы и платежи",
+        "children": [
+          {
+            "listId": 2,
+            "serviceId": 2,
+            "treeId": 2,
+            "title": "Перевод между своими картами",
+            "eribEnabled": true,
+            "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "plEnabled": true,
+            "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "novelty": false,
+            "master": true,
+            "hidden": false,
+            "tags": "Перевод; Платежи",
+            "serviceCode": "transfer_client_sberbank",
+            "children": []
+          },
+          {
+            "listId": 3,
+            "serviceId": 3,
+            "treeId": 3,
+            "title": "Перевод на карту в другом банке",
+            "eribEnabled": true,
+            "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "plEnabled": true,
+            "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "novelty": false,
+            "master": true,
+            "hidden": true,
+            "tags": "Перевод; Банк",
+            "serviceCode": "transfer_client_sberbank",
+            "children": []
+          },
+          {
+            "listId": 4,
+            "serviceId": 4,
+            "treeId": 4,
+            "title": "Перевод клиенту Сбербанка",
+            "eribEnabled": true,
+            "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "plEnabled": true,
+            "plUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
+            "novelty": true,
+            "master": false,
+            "hidden": false,
+            "tags": "Перевод; Клиент",
+            "serviceCode": "transfer_client_sberbank",
+            "children": []
+          }
+        ]
+      },
+      {
+        "listId": 2,
+        "serviceId": 2,
+        "treeId": 2,
+        "title": "Карты",
+        "eribEnabled": true,
+        "eribUrl": "",
+        "plEnabled": true,
+        "plUrl": "",
+        "novelty": false,
+        "master": true,
+        "hidden": false,
+        "tags": "",
+        "serviceCode": "",
+        "children": [
+          {
+            "title": "Дебетовые карты",
+            "children": []
+          },
+          {
+            "title": "Заявка на оформление новой карты",
+            "children": []
+          },
+          {
+            "title": "Блокировка/разблокировка карты",
+            "children": []
+          }
+        ]
+      },
+      {
+        "listId": 3,
+        "serviceId": 3,
+        "treeId": 3,
+        "title": "Кредиты",
+        "eribEnabled": true,
+        "eribUrl": "",
+        "plEnabled": true,
+        "plUrl": "",
+        "novelty": false,
+        "master": true,
+        "hidden": false,
+        "tags": "",
+        "serviceCode": "",
+        "children": []
+      },
+      {
+        "listId": 4,
+        "serviceId": 4,
+        "treeId": 4,
+        "title": "Страховки",
+        "eribEnabled": true,
+        "eribUrl": "",
+        "plEnabled": true,
+        "plUrl": "",
+        "novelty": false,
+        "master": true,
+        "hidden": false,
+        "tags": "",
+        "serviceCode": "",
+        "children": []
+      },
+      {
+        "listId": 5,
+        "serviceId": 5,
+        "treeId": 5,
+        "title": "Инвестиции",
+        "eribEnabled": true,
+        "eribUrl": "",
+        "plEnabled": true,
+        "plUrl": "",
+        "novelty": false,
+        "master": true,
+        "hidden": false,
+        "tags": "",
+        "serviceCode": "",
+        "children": []
+      },
+      {
+        "listId": 6,
+        "serviceId": 6,
+        "treeId": 6,
+        "title": "Госуслуги",
+        "eribEnabled": true,
+        "eribUrl": "",
+        "plEnabled": true,
+        "plUrl": "",
+        "novelty": false,
+        "master": true,
+        "hidden": false,
+        "tags": "",
+        "serviceCode": "",
+        "children": []
+      }
+    ]
+  }
 }

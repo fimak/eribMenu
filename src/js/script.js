@@ -40,36 +40,40 @@ function renderServiceTree (tree) {
  */
 function buildServiceNavigation (navigation) {
     var html = ''
-
-    navigation.forEach(function(item) {
-        html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">'
-        + '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>'
-        + '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">'
-        + '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';
-        html += item.hidden ? 'checked' : '';
-        html += '><label for="sn__tr-hide-' + item.serviceId + '"></label></div></div>'
-        + '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">'
-        + '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + item.serviceId + '"';
-        html += item.novelty ? 'checked' : '';
-        html += '><label for="sn__tr-new-' + item.serviceId + '"></label>'
-        + '</div></div><span class="sn__header__title" title="Развернуть">' + item.title + '</span></div></div>'
-        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + item.serviceId + '" ';
-        html += item.eribEnabled ? 'checked' : '';
-        html += '><label for="sn__tr-erib-' + item.serviceId + '"></label></div> ЕРИБ:</div></div><div class="sn__field">'
-        + '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>'
-        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">'
-        + '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + item.serviceId + '" ';
-        html += item.plEnabled ? 'checked' : '';
-        html += '><label for="sn__tr-pl-' + item.serviceId + '"></label></div> PL:</div></div><div class="sn__field">'
-        + '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>'
-        + '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>'
-        + '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">'
-        + '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>'
-        + '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">'
-        + item.tags + '</textarea></div></div><div class="sn__row"><div class="sn__label"></div>'
-        + '<a class="sn__btn-save" data-id="' + item.serviceId + '" href="#save">Сохранить</a></div></li>';
-    })
+debugger
+    if (navigation) {
+        navigation.forEach(function(item) {
+            html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">' +
+                '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>' +
+                '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">' +
+                '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';
+            html += item.hidden ? 'checked' : '';
+            html += '><label for="sn__tr-hide-' + item.serviceId + '"></label></div></div>' +
+                '<div class="sn__checkbox-wrapper"><div class="sn__checkbox-image sn__checkbox-image--padding">' +
+                '<input type="checkbox" class="sn__tr-new" id="sn__tr-new-' + item.serviceId + '"';
+            html += item.novelty ? 'checked' : '';
+            html += '><label for="sn__tr-new-' + item.serviceId + '"></label>' +
+                '</div></div><span class="sn__header__title" title="Развернуть">' + item.title + '</span></div></div>' +
+                '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">' +
+                '<input type="checkbox" class="sn__tr-erib" id="sn__tr-erib-' + item.serviceId + '" ';
+            html += item.eribEnabled ? 'checked' : '';
+            html += '><label for="sn__tr-erib-' + item.serviceId + '"></label></div> ЕРИБ:</div></div><div class="sn__field">' +
+                '<input class="sn__link-field" type="text" value="' + item.eribUrl + '"></div></div>' +
+                '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside"><div class="sn__checkbox">' +
+                '<input type="checkbox" class="sn__tr-pl" id="sn__tr-pl-' + item.serviceId + '" ';
+            html += item.plEnabled ? 'checked' : '';
+            html += '><label for="sn__tr-pl-' + item.serviceId + '"></label></div> PL:</div></div><div class="sn__field">' +
+                '<input class="sn__link-field" type="text" value="' + item.plUrl + '"></div></div>' +
+                '<div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Код сервиса:</div></div>' +
+                '<div class="sn__field"><input class="sn__service-code-field" type="text" value="' + item.serviceCode + '">' +
+                '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>' +
+                '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">' +
+                item.tags + '</textarea></div></div><div class="sn__row"><div class="sn__label"></div>' +
+                '<a class="sn__btn-save" data-id="' + item.serviceId + '" href="#save">Сохранить</a></div></li>';
+        })
+    } else {
+        html += '<p>Нет вложенных сервисов.</p>'
+    }
 
     return html
 }
@@ -123,6 +127,26 @@ function deleteServiceRequest (id, element) {
 }
 
 /**
+ * Set the current category which you chose in left sidebar
+ * @param id
+ * @param title
+ */
+function setCurrentCategory(id, title) {
+    var tree = findService(id, window.tree)
+
+    if (tree) {
+        renderServiceNavigation(tree.children)
+    } else {
+        renderServiceNavigation(null)
+    }
+
+    window.currentCategory = {
+        id: id,
+        name: title
+    }
+}
+
+/**
  * Initialization request function
  */
 function treeInitRequest () {
@@ -132,7 +156,7 @@ function treeInitRequest () {
             console.log('init success', response);
             window.tree = response.tree
             renderServiceTree(response.tree)
-            renderServiceNavigation(response.tree.children)
+            setCurrentCategory(response.tree.treeId, response.tree.title)
         },
         error: function() {
             console.warn('init fail')
@@ -181,10 +205,27 @@ function updateServiceRequest (parentId, service) {
 
 /**
  * Find the service by treeId
- * @param id
+ * @param treeId
+ * @param tree
  */
-function findService (id) {
-
+function findService (treeId, tree) {
+    var newTree
+    if (Array.isArray(tree)) {
+        tree.every(function(el) {
+            if (el.treeId === treeId) {
+                newTree = el
+                return false
+            } else {
+                return findService(treeId, el)
+            }
+        })
+        return newTree
+    } else {
+        if (tree.treeId === treeId) {
+            return tree
+        }
+        return findService(treeId, tree.children)
+    }
 }
 
 
@@ -207,19 +248,15 @@ $(document).ready(function() {
 
 
 
-    window.currCategory = {
-        id: 1,
-        name: 'Переводы и платежи'
-    }
-
-
-
     /**
-     * Choosing the service category
+     * Choosing the service category (set current category)
      */
     st.on('click', '.st__item', function(event) {
         event.stopPropagation()
-        console.log('service tree item with id=' + $(this).data('id') + ' has been chosen')
+        var id = $(this).data('id')
+        var title = $(this).children('a')[0].innerText
+        console.log('service tree item with id=' + id + ' has been chosen')
+        setCurrentCategory(id, title)
     });
 
 
@@ -330,7 +367,7 @@ $(document).ready(function() {
         selectServiceListRequest()
             .done(function(data) {
                 var html = '<div id="service-add" class="popup"><div class="sa__title">' +
-                    'Добавить сервис в ' + window.currCategory.name + '</div>' +
+                    'Добавить сервис в ' + window.currentCategory.name + '</div>' +
                     '<div class="sa__search"><input type="text" class="sa__search__form" placeholder="Поиск">' +
                     '<a href="#" class="sa__search__button">' +
                     '<img src="img/loupe.svg" alt="loupe" class="sa__search__button__image">' +
@@ -367,7 +404,7 @@ $(document).ready(function() {
             "title": serviceName,
             "hidden": true,
             "novelty": true,
-            "parent": window.currCategory.id,
+            "parent": window.currentCategory.id,
             "master": true,
             "eribEnabled": false,
             "eribUrl": "",
@@ -377,7 +414,7 @@ $(document).ready(function() {
             "tags": [""]
         }
 
-        insertElementRequest(window.currCategory.id, service)
+        insertElementRequest(window.currentCategory.id, service)
             .done(function() {
                 // findTreeItem()
                 // moveTreeItem()
@@ -408,6 +445,6 @@ $(document).ready(function() {
             tags: 'Перевод; Банк;',
             serviceCode: 'transfer_client_sberbank'
         }
-        updateServiceRequest(window.currCategory, service)
+        updateServiceRequest(window.currentCategory, service)
     });
 });

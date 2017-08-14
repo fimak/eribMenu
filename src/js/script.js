@@ -101,7 +101,7 @@ function treeInitRequest () {
             console.log('init success', response);
             window.tree = response.tree
             renderServiceTree(response.tree)
-            renderServiceNavigation(response.navigation)
+            renderServiceNavigation(response.tree.children)
         },
         error: function() {
             console.warn('init fail')

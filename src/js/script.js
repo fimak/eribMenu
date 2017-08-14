@@ -1,17 +1,25 @@
+/**
+ * Render service tree list (left sidebar)
+ * @param tree
+ */
 function renderServiceTree (tree) {
-    var html = '<li class="st__item st__item--open"><a href="#">' + tree.title + '</a><ul class="st__list">'
+    var html = '<li class="st__item st__item--open" data-id="' + tree.treeId + '">' +
+        '<a href="#">' + tree.title + '</a><ul class="st__list">';
 
+    /**
+     * Service tree build function which create the list of services in left sidebar
+     * @param tree
+     */
     function serviceTreeBuild (tree) {
         tree.children.forEach(function(item) {
-            console.log(item)
             if (item.children.length > 0) {
-                html += '<li class="st__item st__item--open">'
+                html += '<li class="st__item st__item--open" data-id="' + item.treeId + '">'
                     + '<a href="#">' + item.title + '</a>'
                     + '<ul class="st__list">';
                 serviceTreeBuild(item);
                 html += '</ul>';
             } else {
-                html += '<li class="st__item st__item--closed">'
+                html += '<li class="st__item st__item--closed" data-id="' + item.treeId + '">'
                     + '<a href="#">' + item.title + '</a>';
             }
             html += '</li>';
@@ -25,6 +33,11 @@ function renderServiceTree (tree) {
     $('#service-tree-list').html(html);
 }
 
+/**
+ * Build service navigation function which build the list of services
+ * @param navigation
+ * @returns {string}
+ */
 function buildServiceNavigation (navigation) {
     var html = ''
 
@@ -61,10 +74,20 @@ function buildServiceNavigation (navigation) {
     return html
 }
 
+/**
+ * Render os service navigation (right block)
+ * @param navigation
+ */
 function renderServiceNavigation (navigation) {
     $('#service-navigation-list').html(buildServiceNavigation(navigation));
 }
 
+/**
+ * Insert element request function
+ * @param parentId
+ * @param service
+ * @returns {*}
+ */
 function insertElementRequest (parentId, service) {
     return $.ajax({
         type: 'POST',
@@ -79,6 +102,11 @@ function insertElementRequest (parentId, service) {
     })
 }
 
+/**
+ * Delete service request function
+ * @param id
+ * @param element
+ */
 function deleteServiceRequest (id, element) {
     $.ajax({
         type: 'POST',
@@ -94,6 +122,9 @@ function deleteServiceRequest (id, element) {
     })
 }
 
+/**
+ * Initialization request function
+ */
 function treeInitRequest () {
     $.ajax({
         url: 'src/response/init.json',
@@ -109,6 +140,10 @@ function treeInitRequest () {
     })
 }
 
+/**
+ * Select service list request function
+ * @returns {*}
+ */
 function selectServiceListRequest () {
     return $.ajax({
         url: 'src/response/selectServiceList.json',
@@ -121,6 +156,12 @@ function selectServiceListRequest () {
     })
 }
 
+/**
+ * Update the service request function
+ * @param parentId
+ * @param service
+ * @returns {*}
+ */
 function updateServiceRequest (parentId, service) {
     return $.ajax({
         type: 'POST',
@@ -138,18 +179,32 @@ function updateServiceRequest (parentId, service) {
     })
 }
 
+/**
+ * Find the service by treeId
+ * @param id
+ */
+function findService (id) {
+
+}
 
 
-//------- On Document Ready -------//
+
+/**
+ * On Document Ready
+ */
 $(document).ready(function() {
     // Initial request to get the tree / keep data in the window.tree
     treeInitRequest()
 
 
+
+    // get the object of service tree
+    var st = $('#service-tree-list');
     // get the object of navigation list
     var sn = $('#service-navigation-list');
     // get the object of expanded navigation list item
     var snm = $('.sn__list__item:not(.sn__list__item--minimized)');
+
 
 
     window.currCategory = {
@@ -158,21 +213,40 @@ $(document).ready(function() {
     }
 
 
-    // Sortable configuration
+
+    /**
+     * Choosing the service category
+     */
+    st.on('click', '.st__item', function(event) {
+        event.stopPropagation()
+        console.log('service tree item with id=' + $(this).data('id') + ' has been chosen')
+    });
+
+
+
+    /**
+     * Sortable configuration
+     */
     sn.sortable({
         axis: 'y',
         cursor: 'move',
         handle: '.sn__drag-handle'
     });
     sn.disableSelection();
-    // Callback on sortUpdate
+
+    /**
+     * Callback of sortUpdate
+     */
     sn.on('sortupdate', function(event, ui) {
         console.log('sorting');
         var next = ui.item.next().data('id')
     });
 
 
-    // Toggle list item
+
+    /**
+     * Toggles list item
+     */
     sn.on('click', '.sn__header', function() {
         console.log('toggling');
         var listItem = $(this).parents('.sn__list__item');
@@ -186,15 +260,19 @@ $(document).ready(function() {
         }
     });
 
-
-    // Expand list items
+    /**
+     * Expand list items
+     */
     $('#sn__tr-expand').click(function() {
         console.log('expand');
         sn.find('.sn__list__item').removeClass('sn__list__item--minimized');
         sn.find('.sn__header__title').attr('title', 'Свернуть');
 
     });
-    // Shrink list items
+
+    /**
+     * Shrink list items
+     */
     $('#sn__tr-shrink').click(function() {
         console.log('shrink');
         sn.find('.sn__list__item').addClass('sn__list__item--minimized');
@@ -202,7 +280,9 @@ $(document).ready(function() {
     });
 
 
-    // Delete element from tree
+    /**
+     * Delete element from tree
+     */
     sn.on('click', '.sn__btn-remove', function() {
         console.log('remove')
         var element = $(this).closest('.sn__list__item')
@@ -230,7 +310,9 @@ $(document).ready(function() {
     });
 
 
-    // Hide / Show / Set visibility
+    /**
+     * Hide / Show / Set visibility
+     */
     snm.on('click', '.sn__tr-hide', function() {
         console.log('hiding')
         var element = $(this).closest('.sn__list__item')
@@ -240,7 +322,9 @@ $(document).ready(function() {
     });
 
 
-    // Add service
+    /**
+     * Add service
+     */
     $('.sn__btn-add').on('click', function(event) {
         event.preventDefault()
         selectServiceListRequest()
@@ -268,7 +352,9 @@ $(document).ready(function() {
     });
 
 
-    // Insert item to tree
+    /**
+     * Insert item to tree
+     */
     $('body').on('dblclick', '.sa__services td', function() {
         var tr = $(this).parent()
         var serviceId = tr.data('id')
@@ -301,7 +387,9 @@ $(document).ready(function() {
     });
 
 
-    // Edit tree element
+    /**
+     * Edit tree element
+     */
     sn.on('click', '.sn__btn-save', function(event) {
         event.preventDefault()
         var id = $(this).data('id')

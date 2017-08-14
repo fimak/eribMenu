@@ -100,15 +100,51 @@
         "serviceCode": "",
         "children": [
           {
+            "listId": 8,
+            "serviceId": 8,
+            "treeId": 8,
             "title": "Дебетовые карты",
+            "eribEnabled": true,
+            "eribUrl": "",
+            "plEnabled": true,
+            "plUrl": "",
+            "novelty": false,
+            "master": true,
+            "hidden": false,
+            "tags": "",
+            "serviceCode": "",
             "children": []
           },
           {
+            "listId": 9,
+            "serviceId": 9,
+            "treeId": 9,
             "title": "Заявка на оформление новой карты",
+            "eribEnabled": true,
+            "eribUrl": "",
+            "plEnabled": true,
+            "plUrl": "",
+            "novelty": false,
+            "master": true,
+            "hidden": false,
+            "tags": "",
+            "serviceCode": "",
             "children": []
           },
           {
+            "listId": 10,
+            "serviceId": 10,
+            "treeId": 10,
             "title": "Блокировка/разблокировка карты",
+            "eribEnabled": true,
+            "eribUrl": "",
+            "plEnabled": true,
+            "plUrl": "",
+            "novelty": false,
+            "master": true,
+            "hidden": false,
+            "tags": "",
+            "serviceCode": "",
             "children": []
           }
         ]

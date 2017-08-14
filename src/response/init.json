@@ -20,9 +20,9 @@
     "serviceCode": "",
     "children": [
       {
-        "listId": 7,
-        "serviceId": 7,
-        "treeId": 7,
+        "listId": 2,
+        "serviceId": 2,
+        "treeId": 2,
         "title": "Переводы и платежи",
         "eribEnabled": true,
         "eribUrl": "",
@@ -35,9 +35,9 @@
         "serviceCode": "",
         "children": [
           {
-            "listId": 2,
-            "serviceId": 2,
-            "treeId": 2,
+            "listId": 3,
+            "serviceId": 3,
+            "treeId": 3,
             "title": "Перевод между своими картами",
             "eribEnabled": true,
             "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
@@ -51,9 +51,9 @@
             "children": []
           },
           {
-            "listId": 3,
-            "serviceId": 3,
-            "treeId": 3,
+            "listId": 4,
+            "serviceId": 4,
+            "treeId": 4,
             "title": "Перевод на карту в другом банке",
             "eribEnabled": true,
             "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
@@ -67,9 +67,9 @@
             "children": []
           },
           {
-            "listId": 4,
-            "serviceId": 4,
-            "treeId": 4,
+            "listId": 5,
+            "serviceId": 5,
+            "treeId": 5,
             "title": "Перевод клиенту Сбербанка",
             "eribEnabled": true,
             "eribUrl": "https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880",
@@ -85,9 +85,9 @@
         ]
       },
       {
-        "listId": 2,
-        "serviceId": 2,
-        "treeId": 2,
+        "listId": 6,
+        "serviceId": 6,
+        "treeId": 6,
         "title": "Карты",
         "eribEnabled": true,
         "eribUrl": "",
@@ -100,10 +100,26 @@
         "serviceCode": "",
         "children": [
           {
+            "listId": 7,
+            "serviceId": 7,
+            "treeId": 7,
+            "title": "Дебетовые карты",
+            "eribEnabled": true,
+            "eribUrl": "",
+            "plEnabled": true,
+            "plUrl": "",
+            "novelty": false,
+            "master": true,
+            "hidden": false,
+            "tags": "",
+            "serviceCode": "",
+            "children": []
+          },
+          {
             "listId": 8,
             "serviceId": 8,
             "treeId": 8,
-            "title": "Дебетовые карты",
+            "title": "Заявка на оформление новой карты",
             "eribEnabled": true,
             "eribUrl": "",
             "plEnabled": true,
@@ -119,22 +135,6 @@
             "listId": 9,
             "serviceId": 9,
             "treeId": 9,
-            "title": "Заявка на оформление новой карты",
-            "eribEnabled": true,
-            "eribUrl": "",
-            "plEnabled": true,
-            "plUrl": "",
-            "novelty": false,
-            "master": true,
-            "hidden": false,
-            "tags": "",
-            "serviceCode": "",
-            "children": []
-          },
-          {
-            "listId": 10,
-            "serviceId": 10,
-            "treeId": 10,
             "title": "Блокировка/разблокировка карты",
             "eribEnabled": true,
             "eribUrl": "",
@@ -150,9 +150,9 @@
         ]
       },
       {
-        "listId": 3,
-        "serviceId": 3,
-        "treeId": 3,
+        "listId": 10,
+        "serviceId": 10,
+        "treeId": 10,
         "title": "Кредиты",
         "eribEnabled": true,
         "eribUrl": "",
@@ -166,9 +166,9 @@
         "children": []
       },
       {
-        "listId": 4,
-        "serviceId": 4,
-        "treeId": 4,
+        "listId": 11,
+        "serviceId": 11,
+        "treeId": 11,
         "title": "Страховки",
         "eribEnabled": true,
         "eribUrl": "",
@@ -182,9 +182,9 @@
         "children": []
       },
       {
-        "listId": 5,
-        "serviceId": 5,
-        "treeId": 5,
+        "listId": 12,
+        "serviceId": 12,
+        "treeId": 12,
         "title": "Инвестиции",
         "eribEnabled": true,
         "eribUrl": "",
@@ -198,9 +198,9 @@
         "children": []
       },
       {
-        "listId": 6,
-        "serviceId": 6,
-        "treeId": 6,
+        "listId": 13,
+        "serviceId": 13,
+        "treeId": 13,
         "title": "Госуслуги",
         "eribEnabled": true,
         "eribUrl": "",

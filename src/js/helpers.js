@@ -11,8 +11,8 @@ function renderServiceTree (tree) {
      * @param tree
      */
     function serviceTreeBuild (tree) {
-        tree.children.forEach(function(item) {
-            if (item.children.length > 0) {
+        tree.descriptionTreeElement.forEach(function(item) {
+            if (item.descriptionTreeElement.length > 0) {
                 html += '<li class="st__item st__item--open" data-id="' + item.treeId + '">'
                     + '<a href="#">' + item.title + '</a>'
                     + '<ul class="st__list">';
@@ -99,7 +99,7 @@ function setCurrentCategory(id, title) {
     var tree = findService(id, window.tree)
 
     if (tree) {
-        renderServiceNavigation(tree.children)
+        renderServiceNavigation(tree.descriptionTreeElement)
     } else {
         renderServiceNavigation(null)
     }
@@ -135,7 +135,7 @@ function findService (treeId, tree) {
         if (tree.treeId === treeId) {
             return tree
         }
-        return findService(treeId, tree.children)
+        return findService(treeId, tree.descriptionTreeElement)
     }
 }
 

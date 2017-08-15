@@ -18,7 +18,7 @@
     "hidden": false,
     "tags": "",
     "serviceCode": "",
-    "children": [
+    "descriptionTreeElement": [
       {
         "listId": 2,
         "serviceId": 2,
@@ -33,7 +33,7 @@
         "hidden": false,
         "tags": "transfers; pays;",
         "serviceCode": "",
-        "children": [
+        "descriptionTreeElement": [
           {
             "listId": 3,
             "serviceId": 3,
@@ -48,7 +48,7 @@
             "hidden": false,
             "tags": "Перевод; Платежи",
             "serviceCode": "transfer_client_sberbank",
-            "children": []
+            "descriptionTreeElement": []
           },
           {
             "listId": 4,
@@ -64,7 +64,7 @@
             "hidden": true,
             "tags": "Перевод; Банк",
             "serviceCode": "transfer_client_sberbank",
-            "children": []
+            "descriptionTreeElement": []
           },
           {
             "listId": 5,
@@ -80,7 +80,7 @@
             "hidden": false,
             "tags": "Перевод; Клиент",
             "serviceCode": "transfer_client_sberbank",
-            "children": []
+            "descriptionTreeElement": []
           }
         ]
       },
@@ -98,7 +98,7 @@
         "hidden": false,
         "tags": "",
         "serviceCode": "",
-        "children": [
+        "descriptionTreeElement": [
           {
             "listId": 7,
             "serviceId": 7,
@@ -113,7 +113,7 @@
             "hidden": false,
             "tags": "",
             "serviceCode": "",
-            "children": []
+            "descriptionTreeElement": []
           },
           {
             "listId": 8,
@@ -129,7 +129,7 @@
             "hidden": false,
             "tags": "",
             "serviceCode": "",
-            "children": []
+            "descriptionTreeElement": []
           },
           {
             "listId": 9,
@@ -145,7 +145,7 @@
             "hidden": false,
             "tags": "",
             "serviceCode": "",
-            "children": []
+            "descriptionTreeElement": []
           }
         ]
       },
@@ -163,7 +163,7 @@
         "hidden": false,
         "tags": "",
         "serviceCode": "",
-        "children": []
+        "descriptionTreeElement": []
       },
       {
         "listId": 11,
@@ -179,7 +179,7 @@
         "hidden": false,
         "tags": "",
         "serviceCode": "",
-        "children": []
+        "descriptionTreeElement": []
       },
       {
         "listId": 12,
@@ -195,7 +195,7 @@
         "hidden": false,
         "tags": "",
         "serviceCode": "",
-        "children": []
+        "descriptionTreeElement": []
       },
       {
         "listId": 13,
@@ -211,7 +211,7 @@
         "hidden": false,
         "tags": "",
         "serviceCode": "",
-        "children": []
+        "descriptionTreeElement": []
       }
     ]
   }

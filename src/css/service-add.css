@@ -41,6 +41,10 @@
     vertical-align: middle;
 }
 
+.sa__table-wrapper{
+    max-height: 800px;
+    overflow-y: auto;
+}
 .sa__services {
     width: 100%;
     margin-top: 5px;

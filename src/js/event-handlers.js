@@ -11,14 +11,14 @@ function addService (event) {
                 '<div class="sa__search"><input type="text" class="sa__search__form" placeholder="Поиск">' +
                 '<a href="#" class="sa__search__button">' +
                 '<img src="img/loupe.svg" alt="loupe" class="sa__search__button__image">' +
-                '</a></div><table class="sa__services">' +
+                '</a></div><div class="sa__table-wrapper"><table class="sa__services">' +
                 '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
 
             data.serviceList.map(function(el) {
                 html += '<tr data-id="' + el.serviceId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
             })
 
-            html += '</table></div>';
+            html += '</table></div></div>';
 
             $.colorbox({
                 width:"50%",

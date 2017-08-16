@@ -22,9 +22,9 @@ function treeInitRequest () {
  * Select service list request function
  * @returns {*}
  */
-function selectServiceListRequest () {
+function selectServicesListRequest () {
     return $.ajax({
-        url: 'src/response/selectServiceList.json',
+        url: 'src/response/selectServicesList.json',
         success: function(response) {
             console.log('select service list success', response)
         },

@@ -73,7 +73,7 @@ function selectServiceCategory (event) {
  */
 function addService (event) {
     event.preventDefault()
-    selectServiceListRequest()
+    selectServicesListRequest()
         .done(function(data) {
             var html = '<div id="service-add" class="popup"><div class="sa__title">' +
                 'Добавить сервис в ' + window.currentCategory.name + '</div>' +

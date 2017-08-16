@@ -1,48 +1,4 @@
 /**
- * Insert element request function
- * @param parentId
- * @param service
- * @returns {*}
- */
-function insertElementRequest (parentId, service) {
-    return $.ajax({
-        type: 'POST',
-        url: 'src/response/insertElement.json',
-        data: {
-            parentServiceTreeId: parentId,
-            descriptionTreeElement: service
-        },
-        success: function() {
-            console.log('InsertElement success')
-        }
-    })
-}
-
-
-
-/**
- * Delete service request function
- * @param id
- * @param element
- */
-function deleteServiceRequest (id, element) {
-    $.ajax({
-        type: 'POST',
-        url: 'src/response/deleteElement.json',
-        data: {id: id},
-        success: function() {
-            console.log('delete success')
-            element.remove()
-        },
-        error: function() {
-            console.warn('remove fail')
-        }
-    })
-}
-
-
-
-/**
  * Initialization request function
  */
 function treeInitRequest () {
@@ -99,6 +55,28 @@ function updateServiceRequest (parentId, service) {
         },
         error: function() {
             console.watn('edit service fail')
+        }
+    })
+}
+
+
+
+/**
+ * Delete service request function
+ * @param id
+ * @param element
+ */
+function deleteServiceRequest (id, element) {
+    $.ajax({
+        type: 'POST',
+        url: 'src/response/deleteElement.json',
+        data: {id: id},
+        success: function() {
+            console.log('delete success')
+            element.remove()
+        },
+        error: function() {
+            console.warn('remove fail')
         }
     })
 }

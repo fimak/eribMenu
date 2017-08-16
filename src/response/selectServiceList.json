@@ -6,6 +6,12 @@
   },
   "serviceList": [
     {
+      "serviceId": 2,
+      "serviceName": "Переводы и платежи",
+      "serviceKey": "pays",
+      "serviceListId": 2
+    },
+    {
       "serviceId": 1100,
       "serviceName": "Новый сервис 0",
       "serviceKey": "new0",

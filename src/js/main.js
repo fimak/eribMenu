@@ -56,10 +56,10 @@ $(document).ready(function() {
     });
 
     /**
-     * Shrink list items
+     * Collapse list items
      */
-    $('#sn__tr-shrink').click(function () {
-        shrinkAll.call(this, sn)
+    $('#sn__tr-collapse').click(function () {
+        collapseAll.call(this, sn)
     });
 
 
@@ -91,7 +91,7 @@ $(document).ready(function() {
      * Insert item to tree
      */
     $('body').on('dblclick', '.sa__services td', function () {
-        insertItem.call(this)
+        insertItem.call(this, sn)
     });
 
 

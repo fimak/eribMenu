@@ -1,5 +1,74 @@
 /**
- * Add service event function
+ * Toggle all items in the list of navigation
+ */
+function toggleItem() {
+    console.log('toggling');
+    var listItem = $(this).parents('.sn__list__item');
+    var headerTitle = $(this).find('.sn__header__title');
+    if (listItem.hasClass('sn__list__item--minimized')) {
+        listItem.removeClass('sn__list__item--minimized');
+        headerTitle.attr('title', 'Свернуть');
+    } else {
+        listItem.addClass('sn__list__item--minimized');
+        headerTitle.attr('title', 'Развернуть');
+    }
+}
+
+/**
+ * Expand item in the list of navigation
+ * @param sn
+ */
+function expandAll(sn) {
+    console.log('expand');
+    sn.find('.sn__list__item').removeClass('sn__list__item--minimized');
+    sn.find('.sn__header__title').attr('title', 'Свернуть');
+}
+
+
+
+/**
+ * Collapse item in the list of navigation
+ * @param sn
+ */
+function collapseAll(sn) {
+    console.log('collapse');
+    sn.find('.sn__list__item').addClass('sn__list__item--minimized');
+    sn.find('.sn__header__title').attr('title', 'Развернуть');
+}
+
+
+
+/**
+ * Set the visibility of the item in the list of navigation
+ */
+function visibilityToggle () {
+    console.log('hiding')
+    var element = $(this).closest('.sn__list__item')
+    var id = element.data('id')
+    element.data('view', !element.data('view'))
+    console.log(element.data('view'))
+}
+
+
+
+/**
+ * Select the service category from left sidebar (set current category)
+ * @param event
+ */
+function selectServiceCategory (event) {
+    event.stopPropagation()
+    var id = $(this).data('id')
+    var title = $(this).children('a')[0].innerText
+    console.log('service tree item with id=' + id + ' has been chosen')
+    setCurrentCategory(id, title)
+}
+
+
+
+/**
+ * Add service function
+ * when you click to button add service
+ * colorbox will be fired
  * @param event
  */
 function addService (event) {
@@ -31,55 +100,37 @@ function addService (event) {
 
 
 /**
- * Select the service category from left sidebar (set current category)
- * @param event
+ * Insert item to tree
+ * when you dblclick by service in popup window
  */
-function selectServiceCategory (event) {
-    event.stopPropagation()
-    var id = $(this).data('id')
-    var title = $(this).children('a')[0].innerText
-    console.log('service tree item with id=' + id + ' has been chosen')
-    setCurrentCategory(id, title)
-}
+function insertItem (sn) {
+    debugger
+    var tr = $(this).parent()
+    var serviceId = tr.data('id')
+    var serviceName = $(tr.children()[0]).text()
+    var serviceCode = $(tr.children()[1]).text()
 
+    var service = findService(serviceId, window.tree)
 
-
-/**
- * Toggle all items in the list of navigation
- */
-function toggleItem() {
-    console.log('toggling');
-    var listItem = $(this).parents('.sn__list__item');
-    var headerTitle = $(this).find('.sn__header__title');
-    if (listItem.hasClass('sn__list__item--minimized')) {
-        listItem.removeClass('sn__list__item--minimized');
-        headerTitle.attr('title', 'Свернуть');
-    } else {
-        listItem.addClass('sn__list__item--minimized');
-        headerTitle.attr('title', 'Развернуть');
+    if (!service) {
+        service = {
+            "serviceId": serviceId,
+            "title": serviceName,
+            "hidden": true,
+            "novelty": true,
+            "parent": window.currentCategory.id,
+            "master": true,
+            "eribEnabled": false,
+            "eribUrl": "",
+            "plEnabled": false,
+            "plUrl": "",
+            "serviceCode": serviceCode,
+            "tags": [""]
+        }
     }
-}
 
-/**
- * Expand item in the list of navigation
- * @param sn
- */
-function expandAll(sn) {
-    console.log('expand');
-    sn.find('.sn__list__item').removeClass('sn__list__item--minimized');
-    sn.find('.sn__header__title').attr('title', 'Свернуть');
-}
-
-
-
-/**
- * Shrink item in the list of navigation
- * @param sn
- */
-function shrinkAll(sn) {
-    console.log('shrink');
-    sn.find('.sn__list__item').addClass('sn__list__item--minimized');
-    sn.find('.sn__header__title').attr('title', 'Развернуть');
+    sn.append(buildServiceNavigation([service]))
+    $.colorbox.close()
 }
 
 
@@ -113,56 +164,6 @@ function deleteElement() {
     })
 }
 
-
-
-/**
- * Set the visibility of the item in the list of navigation
- */
-function visibilityToggle () {
-    console.log('hiding')
-    var element = $(this).closest('.sn__list__item')
-    var id = element.data('id')
-    element.data('view', !element.data('view'))
-    console.log(element.data('view'))
-}
-
-
-
-/**
- * Insert item to tree
- * when you click to button add service
- * colorbox will be fired
- */
-function insertItem () {
-    var tr = $(this).parent()
-    var serviceId = tr.data('id')
-    var serviceName = $(tr.children()[0]).text()
-    var serviceCode = $(tr.children()[1]).text()
-
-    var service = {
-        "id": serviceId,
-        "serviceId": serviceId,
-        "title": serviceName,
-        "hidden": true,
-        "novelty": true,
-        "parent": window.currentCategory.id,
-        "master": true,
-        "eribEnabled": false,
-        "eribUrl": "",
-        "plEnabled": false,
-        "plUrl": "",
-        "serviceCode": serviceCode,
-        "tags": [""]
-    }
-
-    insertElementRequest(window.currentCategory.id, service)
-        .done(function() {
-            // findTreeItem()
-            // moveTreeItem()
-            sn.append(buildServiceNavigation([service]))
-            $.colorbox.close()
-        })
-}
 
 
 /**

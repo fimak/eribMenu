@@ -118,14 +118,15 @@ function setCurrentCategory(id, title) {
  * Find the service by treeId
  * @param treeId
  * @param tree
+ * @returns {object}
  */
 function findService (treeId, tree) {
-    var newTree
+    var newTree = undefined
     if (Array.isArray(tree)) {
         tree.every(function(el) {
             if (el.treeId === treeId) {
                 newTree = el
-                return false
+                return false //exit from 'every' function
             } else {
                 return findService(treeId, el)
             }

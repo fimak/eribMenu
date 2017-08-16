@@ -45,7 +45,7 @@ function buildServiceNavigation (navigation) {
 
     if (navigation) {
         navigation.forEach(function(item) {
-            html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.serviceId + '">' +
+            html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.treeId + '">' +
                 '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>' +
                 '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">' +
                 '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';
@@ -71,7 +71,7 @@ function buildServiceNavigation (navigation) {
                 '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>' +
                 '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">' +
                 item.tags + '</textarea></div></div><div class="sn__row"><div class="sn__label"></div>' +
-                '<a class="sn__btn-save" data-id="' + item.serviceId + '" href="#save">Сохранить</a></div></li>';
+                '<a class="sn__btn-save" data-id="' + item.listId + '" href="#save">Сохранить</a></div></li>';
         })
     } else {
         html += '<p>Нет вложенных сервисов.</p>'

@@ -104,7 +104,6 @@ function addService (event) {
  * when you dblclick by service in popup window
  */
 function insertItem (sn) {
-    debugger
     var tr = $(this).parent()
     var serviceId = tr.data('id')
     var serviceName = $(tr.children()[0]).text()
@@ -129,6 +128,9 @@ function insertItem (sn) {
         }
     }
 
+    // deleteServiceFromTree()
+    // addServiceToTree()
+
     sn.append(buildServiceNavigation([service]))
     $.colorbox.close()
 }
@@ -136,12 +138,12 @@ function insertItem (sn) {
 
 
 /**
- * Delete element in the list of navigation
+ * Delete element from the list of navigation
  */
 function deleteElement() {
-    console.log('remove')
+    console.log('delete')
     var element = $(this).closest('.sn__list__item')
-    var id = element.data('id')
+    var treeId = element.data('id')
 
     $.colorbox({
         width:"50%",
@@ -155,7 +157,16 @@ function deleteElement() {
     });
 
     $('.confirm-yes').on('click', function() {
-        deleteServiceRequest(id, element)
+        deleteElementRequest(treeId)
+            .done(function(data) {
+                if (data.status.code === 0) {
+                    //todo: remove service from window.tree
+                    $('#service-tree-list').find('.st__item[data-id="' + treeId +'"]')[0].remove()
+                    element.remove()
+                } else {
+                    console.warn('Can\'t to delete element. Status code = ' + data.status.code)
+                }
+            })
         $.colorbox.close()
     })
 

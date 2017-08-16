@@ -2,7 +2,7 @@
  * Initialization request function
  */
 function treeInitRequest () {
-    $.ajax({
+    return $.ajax({
         url: 'src/response/init.json',
         success: function(response) {
             console.log('init success', response);
@@ -51,10 +51,10 @@ function updateServiceRequest (parentId, service) {
             descriptionTreeElement: service
         },
         success: function(response) {
-            console.log('edit service success', response)
+            console.log('update service success', response)
         },
         error: function() {
-            console.watn('edit service fail')
+            console.watn('update service fail')
         }
     })
 }
@@ -62,18 +62,16 @@ function updateServiceRequest (parentId, service) {
 
 
 /**
- * Delete service request function
- * @param id
- * @param element
+ * Delete element (service) request function
+ * @param treeId
  */
-function deleteServiceRequest (id, element) {
-    $.ajax({
+function deleteElementRequest (treeId) {
+    return $.ajax({
         type: 'POST',
         url: 'src/response/deleteElement.json',
-        data: {id: id},
+        data: {removingServicesTreeId: treeId},
         success: function() {
             console.log('delete success')
-            element.remove()
         },
         error: function() {
             console.warn('remove fail')

@@ -109,7 +109,8 @@ function insertItem (sn) {
     var serviceName = $(tr.children()[0]).text()
     var serviceCode = $(tr.children()[1]).text()
 
-    var service = findService(serviceId, window.tree)
+    var service = {}
+    Object.assign(service, findService(serviceId, window.tree))
 
     if (!service) {
         service = {
@@ -128,13 +129,17 @@ function insertItem (sn) {
             "serviceCode": serviceCode,
             "descriptionTreeElement": []
         }
+    } else {
+        service.descriptionTreeElement = []
+        service.master = false
     }
 
-    // todo: add service to window.tree
-    var newTree = findParentService(window.currentCategory.id, window.tree)
-    newTree.descriptionTreeElement.push(service)
+    var targetService = findService(window.currentCategory.id, window.tree)
+    // nasty hack of insert service to window.tree
+    targetService.descriptionTreeElement.push(service)
 
     sn.append(buildServiceNavigation([service]))
+    renderServiceTree(window.tree)
     $.colorbox.close()
 }
 

@@ -138,13 +138,13 @@ function findService (treeId, tree) {
  */
 function findParentService (treeId, tree) {
     var newTree
-    if (tree.descriptionTreeElement.some(function(el) { return el.treeId === treeId })) {
-        newTree = tree
-    } else {
-        tree.descriptionTreeElement.every(function(el) {
-            if (newTree) { return false }
-            return findParentService(treeId, el)
+    (function recursiveSearch(tree) {
+        if (tree.descriptionTreeElement.some(function(el) { return el.treeId === treeId })) {
+            newTree = tree
+        }
+        tree.descriptionTreeElement.forEach(function(el) {
+            return recursiveSearch(el)
         })
-    }
+    })(tree)
     return newTree
 }

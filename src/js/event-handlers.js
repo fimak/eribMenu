@@ -106,18 +106,18 @@ function addService (event) {
 function insertItem (sn) {
     var tr = $(this).parent()
     var serviceId = tr.data('service-id')
-    var serviceName = $(tr.children()[0]).text()
+    var serviceTitle = $(tr.children()[0]).text()
     var serviceCode = $(tr.children()[1]).text()
-
-    var service = {}
-    Object.assign(service, findService(serviceId, window.tree))
+debugger
+    var service = findService(serviceId, window.tree)
+    var newService = {}
 
     if (!service) {
-        service = {
+        newService = {
             "listId": null,
             "serviceId": serviceId,
             "treeId": null,
-            "title": serviceName,
+            "title": serviceTitle,
             "eribEnabled": false,
             "eribUrl": "",
             "plEnabled": false,
@@ -130,15 +130,16 @@ function insertItem (sn) {
             "descriptionTreeElement": []
         }
     } else {
-        service.descriptionTreeElement = []
-        service.master = false
+        Object.assign(newService, service)
+        newService.descriptionTreeElement = []
+        newService.master = false
     }
 
     var targetService = findService(window.currentCategory.id, window.tree)
     // nasty hack of insert service to window.tree
-    targetService.descriptionTreeElement.push(service)
+    targetService.descriptionTreeElement.push(newService)
 
-    sn.append(buildServiceNavigation([service]))
+    sn.append(buildServiceNavigation([newService]))
     renderServiceTree(window.tree)
     $.colorbox.close()
 }

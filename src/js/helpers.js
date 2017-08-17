@@ -37,13 +37,13 @@ function renderServiceTree (tree) {
 
 /**
  * Build service navigation function which build the list of services
- * @param navigation
+ * @param {array} navigation
  * @returns {string}
  */
 function buildServiceNavigation (navigation) {
     var html = ''
 
-    if (navigation) {
+    if (navigation && navigation.length > 0) {
         navigation.forEach(function(item) {
             html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.treeId + '">' +
                 '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>' +
@@ -117,34 +117,23 @@ function setCurrentCategory(id, title) {
 /**
  * Find the service by treeId
  * @param treeId
- * @param tree
+ * @param {object} tree
  * @returns {object}
  */
 function findService (treeId, tree) {
-    //todo: pls refactor it
-    var newTree = undefined
-    if (Array.isArray(tree)) {
-        tree.every(function(el) {
-            if (el.treeId === treeId) {
-                newTree = el
-                return false //exit from 'every' function
-            } else {
-                return findService(treeId, el)
-            }
-        })
-        return newTree
-    } else {
-        if (tree.treeId === treeId) {
-            return tree
-        }
-        return findService(treeId, tree.descriptionTreeElement)
-    }
+    var newTree
+    //todo: refactor search, e.g. exit from forEach when tree was found, may be you must replace forEach for it
+    (function recursiveSearch (tree) {
+        if (tree.treeId === treeId) { newTree = tree }
+        tree.descriptionTreeElement.forEach(function(el) { recursiveSearch(el) })
+    })(tree)
+    return newTree
 }
 
 /**
  * Find the parent service by treeId
  * @param {integer} treeId
- * @param {array} tree
+ * @param {object} tree
  * @returns {object}
  */
 function findParentService (treeId, tree) {
@@ -152,7 +141,10 @@ function findParentService (treeId, tree) {
     if (tree.descriptionTreeElement.some(function(el) { return el.treeId === treeId })) {
         newTree = tree
     } else {
-        tree.descriptionTreeElement.every(function(el) { return findParentService(el)})
+        tree.descriptionTreeElement.every(function(el) {
+            if (newTree) { return false }
+            return findParentService(treeId, el)
+        })
     }
     return newTree
 }

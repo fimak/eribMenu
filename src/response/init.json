@@ -113,7 +113,24 @@
             "hidden": false,
             "tags": "",
             "serviceCode": "",
-            "descriptionTreeElement": []
+            "descriptionTreeElement": [
+              {
+                "listId": 14,
+                "serviceId": 14,
+                "treeId": 14,
+                "title": "Тест сервис",
+                "eribEnabled": true,
+                "eribUrl": "",
+                "plEnabled": true,
+                "plUrl": "",
+                "novelty": false,
+                "master": true,
+                "hidden": false,
+                "tags": "",
+                "serviceCode": "",
+                "descriptionTreeElement": []
+              }
+            ]
           },
           {
             "listId": 8,

@@ -84,7 +84,7 @@ function addService (event) {
                 '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
 
             data.serviceList.map(function(el) {
-                html += '<tr data-id="' + el.serviceId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
+                html += '<tr data-service-id="' + el.serviceId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
             })
 
             html += '</table></div></div>';
@@ -105,7 +105,7 @@ function addService (event) {
  */
 function insertItem (sn) {
     var tr = $(this).parent()
-    var serviceId = tr.data('id')
+    var serviceId = tr.data('service-id')
     var serviceName = $(tr.children()[0]).text()
     var serviceCode = $(tr.children()[1]).text()
 
@@ -113,23 +113,26 @@ function insertItem (sn) {
 
     if (!service) {
         service = {
+            "listId": null,
             "serviceId": serviceId,
+            "treeId": null,
             "title": serviceName,
-            "hidden": true,
-            "novelty": true,
-            "parent": window.currentCategory.id,
-            "master": true,
             "eribEnabled": false,
             "eribUrl": "",
             "plEnabled": false,
             "plUrl": "",
+            "novelty": true,
+            "master": true,
+            "hidden": true,
+            "tags": [""],
             "serviceCode": serviceCode,
-            "tags": [""]
+            "descriptionTreeElement": []
         }
     }
 
-    // deleteServiceFromTree()
-    // addServiceToTree()
+    // todo: add service to window.tree
+    var newTree = findParentService(window.currentCategory.id, window.tree)
+    newTree.descriptionTreeElement.push(service)
 
     sn.append(buildServiceNavigation([service]))
     $.colorbox.close()

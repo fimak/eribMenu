@@ -121,6 +121,7 @@ function setCurrentCategory(id, title) {
  * @returns {object}
  */
 function findService (treeId, tree) {
+    //todo: pls refactor it
     var newTree = undefined
     if (Array.isArray(tree)) {
         tree.every(function(el) {
@@ -140,3 +141,18 @@ function findService (treeId, tree) {
     }
 }
 
+/**
+ * Find the parent service by treeId
+ * @param {integer} treeId
+ * @param {array} tree
+ * @returns {object}
+ */
+function findParentService (treeId, tree) {
+    var newTree
+    if (tree.descriptionTreeElement.some(function(el) { return el.treeId === treeId })) {
+        newTree = tree
+    } else {
+        tree.descriptionTreeElement.every(function(el) { return findParentService(el)})
+    }
+    return newTree
+}

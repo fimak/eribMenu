@@ -96,9 +96,9 @@ $(document).ready(function() {
 
 
     /**
-     * Edit tree element
+     * Update tree element
      */
     sn.on('click', '.sn__btn-save', function (event) {
-        editElement.call(this, event)
+        updateElement.call(this, event)
     });
 });

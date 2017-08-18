@@ -54,7 +54,7 @@ function updateServiceRequest (parentId, service) {
             console.log('update service success', response)
         },
         error: function() {
-            console.watn('update service fail')
+            console.warn('update service fail')
         }
     })
 }

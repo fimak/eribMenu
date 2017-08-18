@@ -84,7 +84,7 @@ function addService (event) {
                 '<tr><th>Наименование сервиса</th><th>Код сервиса</th></tr>';
 
             data.serviceList.map(function(el) {
-                html += '<tr data-service-id="' + el.serviceId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
+                html += '<tr data-service-id="' + el.serviceId + '" data-list-id="' + el.servicesListId + '"><td>' + el.serviceName + '</td><td>' + el.serviceKey + '</td></tr>'
             })
 
             html += '</table></div></div>';
@@ -105,6 +105,7 @@ function addService (event) {
  */
 function insertItem (sn) {
     var tr = $(this).parent()
+    var listId = tr.data('list-id')
     var serviceId = tr.data('service-id')
     var serviceTitle = $(tr.children()[0]).text()
     var serviceCode = $(tr.children()[1]).text()
@@ -114,9 +115,9 @@ function insertItem (sn) {
 
     if (!service) {
         newService = {
-            "listId": null,
+            "listId": listId,
             "serviceId": serviceId,
-            "treeId": null,
+            "treeId": "new_" + (new Date()).getTime(),
             "title": serviceTitle,
             "eribEnabled": false,
             "eribUrl": "",
@@ -131,7 +132,7 @@ function insertItem (sn) {
         }
     } else {
         Object.assign(newService, service)
-        newService.treeId = null
+        newService.treeId = "new_" + (new Date()).getTime()
         newService.master = false
         newService.descriptionTreeElement = []
     }
@@ -143,6 +144,43 @@ function insertItem (sn) {
     sn.append(buildServiceNavigation([newService]))
     renderServiceTree(window.tree)
     $.colorbox.close()
+}
+
+
+
+/**
+ * Update element of service tree
+ * @param event
+ */
+function updateElement(event) {
+    event.preventDefault()
+    var item = $(this).closest('.sn__list__item')
+    var treeId = item.data('tree-id')
+
+    var service = {
+        listId: item.data('list-id'),//
+        serviceId: item.data('service-id'),
+        treeId: isNew(treeId) ? null : treeId,
+        title: item.find('.sn__header__title')[0].innerText,
+        eribEnabled: $('#sn__tr-erib-' + treeId)[0].checked,
+        eribUrl: $('#sn__erib-url-' + treeId).val(),
+        plEnabled: $('#sn__tr-pl-' + treeId)[0].checked,
+        plUrl: $('#sn__pl-url-' + treeId).val(),
+        novelty: $('#sn__tr-new-' + treeId)[0].checked,
+        master: item.data('master'),
+        hidden: $('#sn__tr-hide-' + treeId)[0].checked,
+        tags: $('#sn__tags-' + treeId).text(),
+        serviceCode: $('#sn__service-code-' + treeId).val()
+        // descriptionTreeElement: []
+    }
+
+    updateServiceRequest(window.currentCategory, service)
+        .done(function(data) {
+            var newService = findService(treeId, window.tree)
+            // nasty hack of insert service to window.tree by the link of newService
+            newService.treeId = data.servicesTreeId
+            item.removeClass('sn__list__item--new')
+        })
 }
 
 
@@ -183,31 +221,4 @@ function deleteElement() {
     $('.confirm-no').on('click', function() {
         $.colorbox.close()
     })
-}
-
-
-
-/**
- * Edit element of service tree
- * @param event
- */
-function editElement(event) {
-    event.preventDefault()
-    var id = $(this).data('tree-id')
-    var service = {
-        listId: '2',
-        serviceId: '2',
-        treeId: '2',
-        title: 'Перевод на карту в другом банке',
-        eribEnabled: true,
-        eribUrl: 'https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880',
-        plEnabled: false,
-        plUrl: 'https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=107845880',
-        novelty: true,
-        master: '',
-        hidden: true,
-        tags: 'Перевод; Банк;',
-        serviceCode: 'transfer_client_sberbank'
-    }
-    updateServiceRequest(window.currentCategory, service)
 }

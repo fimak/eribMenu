@@ -9,331 +9,331 @@
       "serviceId": 2,
       "serviceName": "Переводы и платежи",
       "serviceKey": "pays",
-      "serviceListId": 2
+      "servicesListId": 2
     },
     {
       "serviceId": 1100,
       "serviceName": "Новый сервис 0",
       "serviceKey": "new0",
-      "serviceListId": 2200
+      "servicesListId": 2200
     },
     {
       "serviceId": 1101,
       "serviceName": "Новый сервис 1",
       "serviceKey": "new1",
-      "serviceListId": 2201
+      "servicesListId": 2201
     },
     {
       "serviceId": 1102,
       "serviceName": "Новый сервис 2",
       "serviceKey": "new2",
-      "serviceListId": 2202
+      "servicesListId": 2202
     },
     {
       "serviceId": 1103,
       "serviceName": "Новый сервис 3",
       "serviceKey": "new3",
-      "serviceListId": 2203
+      "servicesListId": 2203
     },
     {
       "serviceId": 1104,
       "serviceName": "Новый сервис 4",
       "serviceKey": "new4",
-      "serviceListId": 2204
+      "servicesListId": 2204
     },
     {
       "serviceId": 1105,
       "serviceName": "Новый сервис 5",
       "serviceKey": "new5",
-      "serviceListId": 2205
+      "servicesListId": 2205
     },
     {
       "serviceId": 1106,
       "serviceName": "Новый сервис 6",
       "serviceKey": "new6",
-      "serviceListId": 2206
+      "servicesListId": 2206
     },
     {
       "serviceId": 1107,
       "serviceName": "Новый сервис 7",
       "serviceKey": "new7",
-      "serviceListId": 2207
+      "servicesListId": 2207
     },
     {
       "serviceId": 1108,
       "serviceName": "Новый сервис 8",
       "serviceKey": "new8",
-      "serviceListId": 2208
+      "servicesListId": 2208
     },
     {
       "serviceId": 1109,
       "serviceName": "Новый сервис 9",
       "serviceKey": "new9",
-      "serviceListId": 2209
+      "servicesListId": 2209
     },
     {
       "serviceId": 1110,
       "serviceName": "Новый сервис 10",
       "serviceKey": "new10",
-      "serviceListId": 2210
+      "servicesListId": 2210
     },
     {
       "serviceId": 1111,
       "serviceName": "Новый сервис 11",
       "serviceKey": "new11",
-      "serviceListId": 2211
+      "servicesListId": 2211
     },
     {
       "serviceId": 1112,
       "serviceName": "Новый сервис 12",
       "serviceKey": "new12",
-      "serviceListId": 2212
+      "servicesListId": 2212
     },
     {
       "serviceId": 1113,
       "serviceName": "Новый сервис 13",
       "serviceKey": "new13",
-      "serviceListId": 2213
+      "servicesListId": 2213
     },
     {
       "serviceId": 1114,
       "serviceName": "Новый сервис 14",
       "serviceKey": "new14",
-      "serviceListId": 2214
+      "servicesListId": 2214
     },
     {
       "serviceId": 1115,
       "serviceName": "Новый сервис 15",
       "serviceKey": "new15",
-      "serviceListId": 2215
+      "servicesListId": 2215
     },
     {
       "serviceId": 1116,
       "serviceName": "Новый сервис 16",
       "serviceKey": "new16",
-      "serviceListId": 2216
+      "servicesListId": 2216
     },
     {
       "serviceId": 1117,
       "serviceName": "Новый сервис 17",
       "serviceKey": "new17",
-      "serviceListId": 2217
+      "servicesListId": 2217
     },
     {
       "serviceId": 1100,
       "serviceName": "Новый сервис 0",
       "serviceKey": "new0",
-      "serviceListId": 2200
+      "servicesListId": 2200
     },
     {
       "serviceId": 1101,
       "serviceName": "Новый сервис 1",
       "serviceKey": "new1",
-      "serviceListId": 2201
+      "servicesListId": 2201
     },
     {
       "serviceId": 1102,
       "serviceName": "Новый сервис 2",
       "serviceKey": "new2",
-      "serviceListId": 2202
+      "servicesListId": 2202
     },
     {
       "serviceId": 1103,
       "serviceName": "Новый сервис 3",
       "serviceKey": "new3",
-      "serviceListId": 2203
+      "servicesListId": 2203
     },
     {
       "serviceId": 1104,
       "serviceName": "Новый сервис 4",
       "serviceKey": "new4",
-      "serviceListId": 2204
+      "servicesListId": 2204
     },
     {
       "serviceId": 1105,
       "serviceName": "Новый сервис 5",
       "serviceKey": "new5",
-      "serviceListId": 2205
+      "servicesListId": 2205
     },
     {
       "serviceId": 1106,
       "serviceName": "Новый сервис 6",
       "serviceKey": "new6",
-      "serviceListId": 2206
+      "servicesListId": 2206
     },
     {
       "serviceId": 1107,
       "serviceName": "Новый сервис 7",
       "serviceKey": "new7",
-      "serviceListId": 2207
+      "servicesListId": 2207
     },
     {
       "serviceId": 1108,
       "serviceName": "Новый сервис 8",
       "serviceKey": "new8",
-      "serviceListId": 2208
+      "servicesListId": 2208
     },
     {
       "serviceId": 1109,
       "serviceName": "Новый сервис 9",
       "serviceKey": "new9",
-      "serviceListId": 2209
+      "servicesListId": 2209
     },
     {
       "serviceId": 1110,
       "serviceName": "Новый сервис 10",
       "serviceKey": "new10",
-      "serviceListId": 2210
+      "servicesListId": 2210
     },
     {
       "serviceId": 1111,
       "serviceName": "Новый сервис 11",
       "serviceKey": "new11",
-      "serviceListId": 2211
+      "servicesListId": 2211
     },
     {
       "serviceId": 1112,
       "serviceName": "Новый сервис 12",
       "serviceKey": "new12",
-      "serviceListId": 2212
+      "servicesListId": 2212
     },
     {
       "serviceId": 1113,
       "serviceName": "Новый сервис 13",
       "serviceKey": "new13",
-      "serviceListId": 2213
+      "servicesListId": 2213
     },
     {
       "serviceId": 1114,
       "serviceName": "Новый сервис 14",
       "serviceKey": "new14",
-      "serviceListId": 2214
+      "servicesListId": 2214
     },
     {
       "serviceId": 1115,
       "serviceName": "Новый сервис 15",
       "serviceKey": "new15",
-      "serviceListId": 2215
+      "servicesListId": 2215
     },
     {
       "serviceId": 1116,
       "serviceName": "Новый сервис 16",
       "serviceKey": "new16",
-      "serviceListId": 2216
+      "servicesListId": 2216
     },
     {
       "serviceId": 1117,
       "serviceName": "Новый сервис 17",
       "serviceKey": "new17",
-      "serviceListId": 2217
+      "servicesListId": 2217
     },
     {
       "serviceId": 1100,
       "serviceName": "Новый сервис 0",
       "serviceKey": "new0",
-      "serviceListId": 2200
+      "servicesListId": 2200
     },
     {
       "serviceId": 1101,
       "serviceName": "Новый сервис 1",
       "serviceKey": "new1",
-      "serviceListId": 2201
+      "servicesListId": 2201
     },
     {
       "serviceId": 1102,
       "serviceName": "Новый сервис 2",
       "serviceKey": "new2",
-      "serviceListId": 2202
+      "servicesListId": 2202
     },
     {
       "serviceId": 1103,
       "serviceName": "Новый сервис 3",
       "serviceKey": "new3",
-      "serviceListId": 2203
+      "servicesListId": 2203
     },
     {
       "serviceId": 1104,
       "serviceName": "Новый сервис 4",
       "serviceKey": "new4",
-      "serviceListId": 2204
+      "servicesListId": 2204
     },
     {
       "serviceId": 1105,
       "serviceName": "Новый сервис 5",
       "serviceKey": "new5",
-      "serviceListId": 2205
+      "servicesListId": 2205
     },
     {
       "serviceId": 1106,
       "serviceName": "Новый сервис 6",
       "serviceKey": "new6",
-      "serviceListId": 2206
+      "servicesListId": 2206
     },
     {
       "serviceId": 1107,
       "serviceName": "Новый сервис 7",
       "serviceKey": "new7",
-      "serviceListId": 2207
+      "servicesListId": 2207
     },
     {
       "serviceId": 1108,
       "serviceName": "Новый сервис 8",
       "serviceKey": "new8",
-      "serviceListId": 2208
+      "servicesListId": 2208
     },
     {
       "serviceId": 1109,
       "serviceName": "Новый сервис 9",
       "serviceKey": "new9",
-      "serviceListId": 2209
+      "servicesListId": 2209
     },
     {
       "serviceId": 1110,
       "serviceName": "Новый сервис 10",
       "serviceKey": "new10",
-      "serviceListId": 2210
+      "servicesListId": 2210
     },
     {
       "serviceId": 1111,
       "serviceName": "Новый сервис 11",
       "serviceKey": "new11",
-      "serviceListId": 2211
+      "servicesListId": 2211
     },
     {
       "serviceId": 1112,
       "serviceName": "Новый сервис 12",
       "serviceKey": "new12",
-      "serviceListId": 2212
+      "servicesListId": 2212
     },
     {
       "serviceId": 1113,
       "serviceName": "Новый сервис 13",
       "serviceKey": "new13",
-      "serviceListId": 2213
+      "servicesListId": 2213
     },
     {
       "serviceId": 1114,
       "serviceName": "Новый сервис 14",
       "serviceKey": "new14",
-      "serviceListId": 2214
+      "servicesListId": 2214
     },
     {
       "serviceId": 1115,
       "serviceName": "Новый сервис 15",
       "serviceKey": "new15",
-      "serviceListId": 2215
+      "servicesListId": 2215
     },
     {
       "serviceId": 1116,
       "serviceName": "Новый сервис 16",
       "serviceKey": "new16",
-      "serviceListId": 2216
+      "servicesListId": 2216
     },
     {
       "serviceId": 1117,
       "serviceName": "Новый сервис 17",
       "serviceKey": "new17",
-      "serviceListId": 2217
+      "servicesListId": 2217
     }
   ]
 }

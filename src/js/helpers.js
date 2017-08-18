@@ -3,7 +3,7 @@
  * @param tree
  */
 function renderServiceTree (tree) {
-    var html = '<li class="st__item st__item--open" data-id="' + tree.treeId + '">' +
+    var html = '<li class="st__item st__item--open" data-tree-id="' + tree.treeId + '">' +
         '<a href="#">' + tree.title + '</a><ul class="st__list">';
 
     /**
@@ -13,13 +13,13 @@ function renderServiceTree (tree) {
     function serviceTreeBuild (tree) {
         tree.descriptionTreeElement.forEach(function(item) {
             if (item.descriptionTreeElement.length > 0) {
-                html += '<li class="st__item st__item--open" data-id="' + item.treeId + '">'
+                html += '<li class="st__item st__item--open" data-tree-id="' + item.treeId + '">'
                     + '<a href="#">' + item.title + '</a>'
                     + '<ul class="st__list">';
                 serviceTreeBuild(item);
                 html += '</ul>';
             } else {
-                html += '<li class="st__item st__item--closed" data-id="' + item.treeId + '">'
+                html += '<li class="st__item st__item--closed" data-tree-id="' + item.treeId + '">'
                     + '<a href="#">' + item.title + '</a>';
             }
             html += '</li>';
@@ -45,7 +45,7 @@ function buildServiceNavigation (navigation) {
 
     if (navigation && navigation.length > 0) {
         navigation.forEach(function(item) {
-            html += '<li class="sn__list__item sn__list__item--minimized" data-id="' + item.treeId + '">' +
+            html += '<li class="sn__list__item sn__list__item--minimized" data-tree-id="' + item.treeId + '">' +
                 '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>' +
                 '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">' +
                 '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';
@@ -71,7 +71,7 @@ function buildServiceNavigation (navigation) {
                 '</div></div><div class="sn__row"><div class="sn__label"><div class="sn__label__inside">Тэги:</div>' +
                 '</div><div class="sn__field"><textarea class="sn__tags-field" type="text">' +
                 item.tags + '</textarea></div></div><div class="sn__row"><div class="sn__label"></div>' +
-                '<a class="sn__btn-save" data-id="' + item.listId + '" href="#save">Сохранить</a></div></li>';
+                '<a class="sn__btn-save" data-list-id="' + item.listId + '" href="#save">Сохранить</a></div></li>';
         })
     } else {
         html += '<p>Нет вложенных сервисов.</p>'

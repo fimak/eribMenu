@@ -44,7 +44,7 @@ function collapseAll(sn) {
 function visibilityToggle () {
     console.log('hiding')
     var element = $(this).closest('.sn__list__item')
-    var id = element.data('id')
+    var id = element.data('tree-id')
     element.data('view', !element.data('view'))
     console.log(element.data('view'))
 }
@@ -57,7 +57,7 @@ function visibilityToggle () {
  */
 function selectServiceCategory (event) {
     event.stopPropagation()
-    var id = $(this).data('id')
+    var id = $(this).data('tree-id')
     var title = $(this).children('a')[0].innerText
     console.log('service tree item with id=' + id + ' has been chosen')
     setCurrentCategory(id, title)
@@ -108,7 +108,7 @@ function insertItem (sn) {
     var serviceId = tr.data('service-id')
     var serviceTitle = $(tr.children()[0]).text()
     var serviceCode = $(tr.children()[1]).text()
-debugger
+
     var service = findService(serviceId, window.tree)
     var newService = {}
 
@@ -131,12 +131,13 @@ debugger
         }
     } else {
         Object.assign(newService, service)
-        newService.descriptionTreeElement = []
+        newService.treeId = null
         newService.master = false
+        newService.descriptionTreeElement = []
     }
 
     var targetService = findService(window.currentCategory.id, window.tree)
-    // nasty hack of insert service to window.tree
+    // nasty hack of insert service to window.tree by the link of targetService
     targetService.descriptionTreeElement.push(newService)
 
     sn.append(buildServiceNavigation([newService]))
@@ -152,7 +153,7 @@ debugger
 function deleteElement() {
     console.log('delete')
     var element = $(this).closest('.sn__list__item')
-    var treeId = element.data('id')
+    var treeId = element.data('tree-id')
 
     $.colorbox({
         width:"50%",
@@ -170,7 +171,7 @@ function deleteElement() {
             .done(function(data) {
                 if (data.status.code === 0) {
                     //todo: remove service from window.tree
-                    $('#service-tree-list').find('.st__item[data-id="' + treeId +'"]')[0].remove()
+                    $('#service-tree-list').find('.st__item[data-tree-id="' + treeId +'"]')[0].remove()
                     element.remove()
                 } else {
                     console.warn('Can\'t to delete element. Status code = ' + data.status.code)
@@ -192,7 +193,7 @@ function deleteElement() {
  */
 function editElement(event) {
     event.preventDefault()
-    var id = $(this).data('id')
+    var id = $(this).data('tree-id')
     var service = {
         listId: '2',
         serviceId: '2',

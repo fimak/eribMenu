@@ -37,7 +37,7 @@ $(document).ready(function() {
      */
     sn.on('sortupdate', function (event, ui) {
         console.log('sorting');
-        var next = ui.item.next().data('id')
+        var next = ui.item.next().data('tree-id')
     });
 
 

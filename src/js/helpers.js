@@ -45,7 +45,7 @@ function buildServiceNavigation (navigation) {
 
     if (navigation && navigation.length > 0) {
         navigation.forEach(function(item) {
-            html += '<li class="sn__list__item sn__list__item--minimized" data-tree-id="' + item.treeId + '">' +
+            html += '<li class="sn__list__item sn__list__item--minimized" data-tree-id="' + item.treeId + '" data-master="' + item.master + '">' +
                 '<div class="sn__btn-remove"></div><div class="sn__drag-handle"></div>' +
                 '<div class="sn__header"><div class="sn__header__item"><div class="sn__checkbox-wrapper">' +
                 '<div class="sn__checkbox-image"><input type="checkbox" class="sn__tr-hide" id="sn__tr-hide-' + item.serviceId + '"';

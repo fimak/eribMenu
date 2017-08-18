@@ -40,6 +40,34 @@
         z-index: 2;
 
     }
+    .sn__list__item[data-tree-id="null"]:before {
+        content: 'Сохранить';
+        display: block;
+        position: absolute;
+        padding: 2px;
+        cursor: pointer;
+        top: 12px;
+        right: 160px;
+        border: 1px solid #1aa437;
+        border-radius: 2px;
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        color: #1aa437;
+    }
+    .sn__list__item[data-master="false"]:after {
+        content: 'Сделать главным';
+        display: block;
+        position: absolute;
+        padding: 2px;
+        cursor: pointer;
+        top: 12px;
+        right: 50px;
+        border: 1px solid #1aa437;
+        border-radius: 2px;
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        color: #1aa437;
+    }
     .sn__list__item:not(:first-child) {
         margin-top: -1px;
     }

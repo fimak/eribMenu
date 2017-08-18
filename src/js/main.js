@@ -101,4 +101,9 @@ $(document).ready(function() {
     sn.on('click', '.sn__btn-save', function (event) {
         updateElement.call(this, event)
     });
+
+    sn.on('change', '.sn__list__item', function () {
+        debugger
+       $(this).closest('.sn__list__item').addClass('sn__list__item--new')
+    });
 });

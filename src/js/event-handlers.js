@@ -152,7 +152,7 @@ function insertItem (sn) {
  * Update element of service tree
  * @param event
  */
-function updateElement(event) {
+function updateElement (event) {
     event.preventDefault()
     var item = $(this).closest('.sn__list__item')
     var treeId = item.data('tree-id')
@@ -188,7 +188,7 @@ function updateElement(event) {
 /**
  * Delete element from the list of navigation
  */
-function deleteElement() {
+function deleteElement () {
     console.log('delete')
     var element = $(this).closest('.sn__list__item')
     var treeId = element.data('tree-id')
@@ -221,4 +221,20 @@ function deleteElement() {
     $('.confirm-no').on('click', function() {
         $.colorbox.close()
     })
+}
+
+
+/**
+ * Move element (sort tree)
+ * @param event
+ * @param ui
+ */
+function moveElement (item) {
+    console.log('sorting')
+    var treeId = $(item).data('tree-id')
+    var prevItem = $(item).prev().data('tree-id')
+    moveElementRequest(treeId, prevItem)
+        .done(function(data) {
+            //todo: change in window.tree
+        })
 }

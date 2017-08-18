@@ -78,3 +78,27 @@ function deleteElementRequest (treeId) {
         }
     })
 }
+
+
+/**
+ * Move element (sort tree)
+ * @param treeId
+ * @param adjacentTreeId
+ * @returns {*}
+ */
+function moveElementRequest (treeId, adjacentTreeId) {
+    return $.ajax({
+        type: 'POST',
+        url: 'src/response/moveElement.json',
+        data: {
+            movingServiceTreeElementId: treeId,
+            newAdjacentServiceTreeElementId: adjacentTreeId
+        },
+        success: function() {
+            console.log('moveElement success')
+        },
+        error: function() {
+            console.log('moveElement fail')
+        }
+    })
+}

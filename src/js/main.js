@@ -36,8 +36,7 @@ $(document).ready(function() {
      * Callback of sortUpdate
      */
     sn.on('sortupdate', function (event, ui) {
-        console.log('sorting');
-        var next = ui.item.next().data('tree-id')
+        moveElement.call(this, ui.item)
     });
 
 
